@@ -1,8 +1,8 @@
 // Central config. Fill in the real values before launch (see plan: decisions at build time).
 
 export const site = {
-  name: "Nositelný deník",
-  // TODO(peter): set the real domain once purchased (likely "whoop…something").
+  name: "Whoop deník",
+  // TODO(peter): set the real domain once purchased (leaning whoopdenik.cz).
   url: "https://example.com",
   author: "Peter",
   // Short tagline used in header/OG.

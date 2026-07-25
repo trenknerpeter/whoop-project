@@ -1,4 +1,4 @@
-# Launch checklist — Nositelný deník (Whoop blog)
+# Launch checklist — Whoop deník (Whoop blog)
 
 Personal CZ wearables blog. Goal: rank for low-competition Czech Whoop queries
 and earn referral credits. See the design doc in the Claude plan for full context.
@@ -9,9 +9,10 @@ Search the repo for these and replace with real values:
 
 - [ ] **`lib/site.ts` → `WHOOP_REFERRAL_URL`** — your real referral link from the
       Whoop app (☰ → "Get One Month Free"). Every CTA routes through `/go` to this.
-- [ ] **`lib/site.ts` → `site.url`** — the real domain once purchased.
-- [ ] **`lib/site.ts` → `site.name`** — currently "Nositelný deník". Rename if you
-      want something else (it's used in the header, footer, OG image, JSON-LD).
+- [ ] **`lib/site.ts` → `site.url`** — the real domain once purchased (leaning
+      whoopdenik.cz).
+- [x] **`lib/site.ts` → `site.name`** — set to "Whoop deník" (used in the header,
+      footer, OG image, JSON-LD).
 
 ## Before you go live — content (`⚠ Doplnit` boxes)
 
