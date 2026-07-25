@@ -34,12 +34,12 @@ export const articles: Article[] = [
   },
   {
     slug: "whoop-vs-helio",
-    title: "Whoop vs Helio Strap: souboj náramků bez displeje",
+    title: "Whoop vs Amazfit Helio Strap: nosil jsem obojí",
     nav: "Whoop vs Helio",
     kicker: "Srovnání",
     excerpt:
-      "Helio Ring/Strap láká nižší cenou bez předplatného. Porovnal jsem přesnost, appku i pohodlí.",
-    updated: "2026-07-16",
+      "Rok s Helio Strapem, pak přechod na Whoop. BioCharge vs Recovery, přesnost, appky a co reálně stojí za ty peníze.",
+    updated: "2026-07-25",
     isWhoop: true,
   },
   {
