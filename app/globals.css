@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  "Widget Stack" theme (Claude Design direction 1a).
+  Soft grey canvas, content in rounded white widget cards.
+  Whoop-app color language: anthracite + slate surfaces, recovery-green +
+  strain-blue as the only accents (titles on dark, data chips on white).
+*/
+@theme {
+  --color-canvas: #f0f2f4;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f6f7f8;
+
+  --color-anthracite: #23272e;
+  --color-slate: #565d66;
+
+  --color-ink: #23272e;
+  --color-prose: #3a4048;
+  --color-ink-muted: #565d66;
+
+  /* on dark surfaces */
+  --color-on-dark: #ffffff;
+  --color-on-dark-soft: #aab1b9;
+  --color-on-dark-faint: #7b828b;
+
+  /* accents — bright variants sit on dark, deep variants on white */
+  --color-green: #19d992;
+  --color-green-deep: #0ba36b;
+  --color-green-ink: #10251c;
+  --color-blue: #4da8f0;
+  --color-blue-deep: #1288d8;
+
+  --color-line: #e4e7ea;
+  --color-line-soft: #eef0f2;
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --shadow-widget: 0 1px 2px rgba(35, 39, 46, 0.06),
+    0 16px 40px -24px rgba(35, 39, 46, 0.3);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+/* Editorial article typography inside the white widget body */
+.prose-editorial {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-prose);
+}
+.prose-editorial > * + * {
+  margin-top: 1.25em;
+}
+.prose-editorial h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-top: 2.25em;
+}
+.prose-editorial h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-top: 1.8em;
+}
+.prose-editorial p,
+.prose-editorial ul,
+.prose-editorial ol {
+  max-width: 62ch;
+}
+.prose-editorial a {
+  color: var(--color-blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose-editorial a:hover {
+  color: var(--color-green-deep);
+}
+.prose-editorial strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.prose-editorial ul {
+  list-style: none;
+  padding-left: 0;
+}
+.prose-editorial ul > li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.prose-editorial ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.7em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background-color: var(--color-green-deep);
+}
+.prose-editorial ul > li + li {
+  margin-top: 0.55em;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise {
+    animation: none;
+  }
 }

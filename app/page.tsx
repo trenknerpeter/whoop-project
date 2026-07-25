@@ -1,65 +1,88 @@
-import Image from "next/image";
+import Link from "next/link";
+import { articles, dealSlug } from "@/lib/nav";
+import { site } from "@/lib/site";
+import { TodoNote } from "@/components/Note";
+import { JsonLd } from "@/lib/jsonld";
+
+const siteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+  inLanguage: "cs-CZ",
+  description: site.description,
+  publisher: { "@type": "Person", name: site.author },
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto max-w-5xl px-5 pb-14 pt-2">
+      <JsonLd data={siteLd} />
+
+      {/* Hero widget: anthracite intro + article grid */}
+      <section className="animate-rise overflow-hidden rounded-3xl bg-surface shadow-widget">
+        <div className="bg-anthracite px-7 py-12 sm:px-10 sm:py-14">
+          <p className="font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-blue">
+            Osobní deník
           </p>
+          <h1 className="mt-3 max-w-[22ch] font-display text-[2.1rem] font-semibold leading-[1.06] tracking-[-0.02em] text-on-dark sm:text-[2.75rem]">
+            Nosím fitness náramky tak dlouho, až vím, které stojí za ty peníze.
+          </h1>
+          <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
+            Fitbit, Helio Strap, teď Whoop 5.0. Píšu si sem, co mi který kus
+            reálně dal — bez marketingových keců a bez skóre za deset z deseti u
+            všeho.
+          </p>
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <Link
+              href="/whoop-recenze"
+              className="rounded-full bg-green px-5 py-2.5 font-display text-sm font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
+            >
+              Přečíst recenzi Whoopu
+            </Link>
+            <Link
+              href={`/${dealSlug}`}
+              className="rounded-full border border-[#4a5058] px-5 py-2.5 text-sm font-medium text-[#c9cdd2] transition-colors hover:border-green hover:text-green"
+            >
+              Jak získat měsíc zdarma
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-x-9 gap-y-8 px-7 py-9 sm:grid-cols-2 sm:px-10">
+          {articles.map((a) => (
+            <Link key={a.slug} href={`/${a.slug}`} className="group block">
+              <p className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-deep">
+                {a.kicker}
+              </p>
+              <h2 className="mt-2 font-display text-[1.2rem] font-semibold leading-snug text-ink transition-colors group-hover:text-green-deep">
+                {a.title}
+              </h2>
+              <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-muted">
+                {a.excerpt}
+              </p>
+            </Link>
+          ))}
         </div>
-      </main>
+      </section>
+
+      <TodoNote>
+        Sem přijde tvoje reálné foto — náramek na zápěstí nebo screenshot z appky.
+        Autentické fotky výrazně zvednou důvěryhodnost i SEO.
+      </TodoNote>
+
+      {/* Why this blog */}
+      <section className="mt-6 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:px-10">
+        <h2 className="font-display text-2xl font-semibold text-ink">
+          Proč tenhle blog
+        </h2>
+        <p className="mt-3 max-w-[62ch] leading-relaxed text-prose">
+          Recenze náramků na internetu skoro vždycky píše někdo, kdo daný kus
+          nosil týden a pak ho vrátil. Já je nosím měsíce a srovnávám je mezi
+          sebou na jednom zápěstí. Když ti přes moje odkazy vyjde měsíc Whoopu
+          zdarma, mám z toho radost — a měsíc kreditu. — {site.author}
+        </p>
+      </section>
     </div>
   );
 }
