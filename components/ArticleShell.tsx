@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReferralCTA } from "./ReferralCTA";
+import { REFERRAL_DEAL } from "@/lib/site";
 
 type Props = {
   kicker: string;
@@ -8,6 +9,9 @@ type Props = {
   updated?: string;
   source: string; // referral tracking source; also toggles the CTA
   showCTA?: boolean;
+  // Show a compact CTA button in the masthead, above the fold — for money
+  // pages where the reader shouldn't have to scroll to convert.
+  heroCta?: boolean;
   children: React.ReactNode;
 };
 
@@ -27,6 +31,7 @@ export function ArticleShell({
   updated,
   source,
   showCTA = true,
+  heroCta = false,
   children,
 }: Props) {
   const date = formatDate(updated);
@@ -46,6 +51,17 @@ export function ArticleShell({
           </p>
           {date && (
             <p className="mt-4 text-sm text-on-dark-faint">Aktualizováno {date}</p>
+          )}
+          {heroCta && (
+            <a
+              href={`/go?src=${encodeURIComponent(source)}-hero`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-green px-6 py-3 font-display text-[0.95rem] font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
+            >
+              {REFERRAL_DEAL.button}
+              <span aria-hidden>→</span>
+            </a>
           )}
         </header>
 

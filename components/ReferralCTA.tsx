@@ -14,6 +14,8 @@ export function ReferralCTA({ source }: { source: string }) {
       </p>
       <a
         href={`/go?src=${encodeURIComponent(source)}`}
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-5 inline-flex items-center gap-2 rounded-full bg-green px-6 py-3 font-display text-[0.95rem] font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
       >
         {REFERRAL_DEAL.button}

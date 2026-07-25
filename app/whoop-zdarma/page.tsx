@@ -51,6 +51,7 @@ export default function Page() {
         title="Whoop na měsíc zdarma — a bez háčků"
         standfirst="Nejčastější důvod, proč lidi hledají slevu nebo promo kód na Whoop. Vysvětlím, jak to reálně funguje, ať víš, do čeho jdeš."
         updated={updated}
+        heroCta
         source="money-page"
       >
         <p>
