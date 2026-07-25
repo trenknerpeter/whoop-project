@@ -3,6 +3,7 @@ import { ArticleShell } from "@/components/ArticleShell";
 import { Faq, type QA } from "@/components/Faq";
 import { AsideNote } from "@/components/Note";
 import { JsonLd, faqLd, articleLd } from "@/lib/jsonld";
+import { WHOOP_REFERRAL_CODE } from "@/lib/site";
 
 const slug = "whoop-zdarma";
 const title = "Whoop na měsíc zdarma: jak na to (2026)";
@@ -34,6 +35,10 @@ const faq: QA[] = [
     q: "Můžu odkaz použít, když už Whoop mám?",
     a: "Referral je určený pro nové členy. Pokud už aktivní členství máš, tenhle měsíc zdarma se na tebe nevztahuje.",
   },
+  {
+    q: "Musím kliknout na odkaz, nebo stačí jen kód?",
+    a: `Stačí i ručně zadaný kód ${WHOOP_REFERRAL_CODE} při registraci — funguje úplně stejně jako odkaz. Kliknutí na tlačítko je jen pohodlnější, protože se kód přiřadí automaticky.`,
+  },
 ];
 
 export default function Page() {
@@ -49,15 +54,22 @@ export default function Page() {
         source="money-page"
       >
         <p>
-          Whoop nefunguje na klasické slevové kódy jako e-shop. Místo toho má{" "}
-          <strong>referral program</strong>: každý člen má svůj osobní odkaz a
-          když se přes něj přihlásí někdo nový, oba na tom vydělají. Žádný kód
-          typu „SLEVA20" tedy nehledej — nefunguje. Funguje odkaz.
+          Whoop nefunguje na obecné slevové kódy jako e-shop — nehledej tedy nic
+          jako „SLEVA20", to by nikam nevedlo. Místo toho má{" "}
+          <strong>referral program</strong>: každý člen dostane svůj osobní kód
+          a odkaz, a když se přes něj přihlásí někdo nový, vydělají na tom oba.
         </p>
+
+        <div className="not-prose my-6 flex flex-wrap items-center gap-3 rounded-2xl bg-surface-muted px-5 py-4">
+          <span className="text-sm text-ink-muted">Můj osobní referral kód</span>
+          <span className="rounded-lg bg-surface px-3 py-1 font-mono text-lg font-semibold tracking-wide text-ink">
+            {WHOOP_REFERRAL_CODE}
+          </span>
+        </div>
 
         <h2>Jak to funguje krok za krokem</h2>
         <ul>
-          <li>Klikneš na moje referral tlačítko níž a otevře se ti oficiální stránka Whoopu.</li>
+          <li>Klikneš na moje referral tlačítko níž (nebo ručně zadáš kód {WHOOP_REFERRAL_CODE} při registraci) a otevře se ti oficiální stránka Whoopu.</li>
           <li>Vybereš si členství a dokončíš registraci — <strong>první měsíc máš zdarma</strong>.</li>
           <li>Náramek Whoop 5.0 je v ceně členství, nekupuješ ho zvlášť.</li>
           <li>Já dostanu měsíc kreditu, jakmile u Whoopu zůstaneš přes druhý měsíc.</li>

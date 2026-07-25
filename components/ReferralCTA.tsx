@@ -1,4 +1,4 @@
-import { REFERRAL_DEAL } from "@/lib/site";
+import { REFERRAL_DEAL, WHOOP_REFERRAL_CODE } from "@/lib/site";
 
 // Shared referral card (Widget Stack: slate surface, green pill button).
 // Rendered at the end of every Whoop page. The button routes through /go so
@@ -20,7 +20,12 @@ export function ReferralCTA({ source }: { source: string }) {
         <span aria-hidden>→</span>
       </a>
       <p className="mt-3.5 text-xs text-[#9ca2a9]">
-        Otevře oficiální stránku WHOOP. Neoficiální osobní odkaz.
+        Otevře oficiální stránku WHOOP. Neoficiální osobní odkaz — nebo zadej
+        kód{" "}
+        <span className="font-mono font-semibold text-[#c9cdd2]">
+          {WHOOP_REFERRAL_CODE}
+        </span>{" "}
+        ručně.
       </p>
     </aside>
   );
