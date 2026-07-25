@@ -38,7 +38,7 @@ export const articles: Article[] = [
     nav: "Whoop vs Helio",
     kicker: "Srovnání",
     excerpt:
-      "Rok s Helio Strapem, pak přechod na Whoop. BioCharge vs Recovery, přesnost, appky a co reálně stojí za ty peníze.",
+      "Rok s Helio Strapem, pak přechod na Whoop. Skvělá a přesná data vs chytré insighty — a co reálně stojí za ty peníze.",
     updated: "2026-07-25",
     isWhoop: true,
   },
