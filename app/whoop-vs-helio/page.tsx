@@ -3,6 +3,7 @@ import { ArticleShell } from "@/components/ArticleShell";
 import { CompareTable } from "@/components/CompareTable";
 import { Faq, type QA } from "@/components/Faq";
 import { AsideNote, TodoNote } from "@/components/Note";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { JsonLd, articleLd, faqLd } from "@/lib/jsonld";
 import { getArticle } from "@/lib/nav";
 
@@ -66,10 +67,15 @@ export default function Page() {
           vlastního zápěstí a k Heliu jsem měl upřímně blízko.
         </p>
 
-        <TodoNote>
-          Foto slot: náramek Helio na zápěstí / paži a ideálně oba náramky
-          vedle sebe. (Doplníš později.)
-        </TodoNote>
+        <PhotoFigure
+          images={[
+            {
+              src: "/images/helio-strap.png",
+              alt: "Amazfit Helio Strap — látkový náramek bez displeje",
+            },
+          ]}
+          caption="Amazfit Helio Strap — žádný displej, jen látkový pásek a senzor. Stejná filozofie jako Whoop."
+        />
 
         <AsideNote title="TL;DR verdikt">
           Helio Strap je skvělý poměr cena/výkon — přesný, s neuvěřitelně
@@ -177,10 +183,15 @@ export default function Page() {
             lepšího.
           </li>
         </ul>
-        <TodoNote>
-          Foto slot: screenshot detailu běžeckého nebo tenisového tréninku ze
-          Zepp appky (kadence / počítání úderů). (Doplníš později.)
-        </TodoNote>
+        <PhotoFigure
+          images={[
+            {
+              src: "/images/helio-running-detail.jpg",
+              alt: "Detail běžeckého tréninku ze Zepp appky: kadence, délka kroku, kroky",
+            },
+          ]}
+          caption="Detail běhu ze Zepp: průměrná i maximální kadence, délka kroku, kroky, převýšení. Takhle hluboko jde Helio u každého tréninku."
+        />
 
         <h2>BioCharge: zajímavý nápad, který mě nepřesvědčil</h2>
         <p>
@@ -212,6 +223,19 @@ export default function Page() {
           je to na tobě. Whoop čísla čte za tebe a řekne, co je důležité a co
           s tím dělat, abys to udržel nebo zlepšil.
         </p>
+        <PhotoFigure
+          images={[
+            {
+              src: "/images/whoop-running-1.jpg",
+              alt: "Whoop běh: trasa, tempo a zpráva od AI kouče",
+            },
+            {
+              src: "/images/whoop-running-2.jpg",
+              alt: "Whoop běh: zátěž (Strain) a tepové zóny",
+            },
+          ]}
+          caption="Whoop u stejného typu běhu: vedle čísel (Strain, tepové zóny) přidá i větu od AI kouče — „that 26-minute hill run had some real bite to it“. Přesně ten kontext, který Heliu chybí."
+        />
         <ul>
           <li>
             <strong>Integrovaný AI kouč.</strong> Whoop má chytrého kouče
