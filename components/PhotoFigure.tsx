@@ -49,7 +49,7 @@ export function PhotoFigure({
             onClick={() => setActive(img)}
             aria-label={`Zvětšit: ${img.alt}`}
             className={`group overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-widget ${
-              single ? "max-w-[240px]" : "basis-[46%] sm:basis-auto"
+              single ? "max-w-[240px]" : "w-fit shrink-0"
             }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -58,7 +58,7 @@ export function PhotoFigure({
               alt={img.alt}
               loading="lazy"
               className={`h-64 object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-72 ${
-                single ? "w-full" : "w-full sm:w-auto"
+                single ? "w-full" : "w-auto"
               }`}
             />
           </button>
