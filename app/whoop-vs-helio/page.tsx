@@ -294,7 +294,7 @@ export default function Page() {
           takže si to porovnáš sám a zadarmo.
         </p>
         <p>
-          Moji zkušenost s Whoopem po šesti týdnech najdeš v{" "}
+          Moji úvodní zkušenost s Whoopem najdeš v{" "}
           <a href="/whoop-recenze">recenzi Whoop 5.0</a> a kompletní rozpad
           cen v článku <a href="/whoop-cena">kolik stojí Whoop</a>.
         </p>

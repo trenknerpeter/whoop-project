@@ -86,7 +86,7 @@ export default function Page() {
 
         <h2>Vyplatí se to?</h2>
         <p>
-          To záleží, jak moc data využiješ. Můj názor po šesti týdnech i s tím,
+          To záleží, jak moc data využiješ. Můj názor i s tím,
           komu bych Whoop nedoporučil, je v{" "}
           <a href="/whoop-recenze">recenzi Whoopu</a>. A pokud hledáš variantu
           bez měsíčních poplatků, porovnal jsem Whoop s{" "}

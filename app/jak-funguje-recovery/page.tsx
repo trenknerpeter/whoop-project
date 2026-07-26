@@ -80,7 +80,7 @@ export default function Page() {
         <h2>Proč je to užitečné</h2>
         <p>
           Pro mě je Recovery hlavní důvod, proč Whoop vůbec nosím — víc v{" "}
-          <a href="/whoop-recenze">recenzi po šesti týdnech</a>. Jestli tě to
+          <a href="/whoop-recenze">recenzi Whoop 5.0</a>. Jestli tě to
           láká vyzkoušet, <a href="/whoop-zdarma">první měsíc máš zdarma</a>.
         </p>
       </ArticleShell>

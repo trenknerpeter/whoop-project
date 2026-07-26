@@ -88,7 +88,7 @@ export default function Page() {
           na vyzkoušení, ale ať víš — po něm už se platí. Než se rozhodneš,
           projdi si můj{" "}
           <a href="/whoop-cena">rozpad ceny v korunách</a> a hlavně{" "}
-          <a href="/whoop-recenze">recenzi po šesti týdnech</a>, kde píšu i to,
+          <a href="/whoop-recenze">recenzi Whoop 5.0</a>, kde píšu i to,
           komu Whoop nedoporučuju.
         </p>
 

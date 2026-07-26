@@ -14,11 +14,11 @@ export type Article = {
 export const articles: Article[] = [
   {
     slug: "whoop-recenze",
-    title: "Whoop 5.0 recenze: 6 týdnů na zápěstí",
+    title: "Whoop 5.0 recenze: proč jsem se vrátil",
     nav: "Recenze",
     kicker: "Recenze",
     excerpt:
-      "Náramek bez displeje za předplatné. Dává to smysl? Moje upřímná zkušenost po šesti týdnech nošení.",
+      "Náramek bez displeje za předplatné. Dává to smysl? Úvodní recenze po návratu na tier Peak — přesnost, appka i cena.",
     updated: "2026-07-20",
     isWhoop: true,
   },
