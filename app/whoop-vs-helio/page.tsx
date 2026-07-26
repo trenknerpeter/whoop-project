@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArticleShell } from "@/components/ArticleShell";
 import { CompareTable } from "@/components/CompareTable";
 import { Faq, type QA } from "@/components/Faq";
-import { AsideNote, TodoNote } from "@/components/Note";
+import { AsideNote } from "@/components/Note";
 import { PhotoFigure } from "@/components/PhotoFigure";
 import { JsonLd, articleLd, faqLd } from "@/lib/jsonld";
 import { getArticle } from "@/lib/nav";
@@ -48,7 +48,7 @@ export default function Page() {
       <JsonLd data={faqLd(faq)} />
       <ArticleShell
         kicker="Srovnání"
-        title="Whoop vs Amazfit Helio Strap: souboj náramků bez displeje"
+        title="Whoop vs Amazfit Helio Strap: nejsou data jako data"
         standfirst="Stejný koncept — žádný displej, měření 24/7, ranní číslo v appce. Úplně jiný obchodní model: Whoop chce předplatné, Helio jednu platbu. Helio jsem nosil přes rok, tohle je upřímné srovnání."
         updated={meta.updated}
         source="compare-helio"
@@ -132,11 +132,11 @@ export default function Page() {
             {
               label: "Výdrž baterie",
               a: { text: "9–10 dní", tone: "recovery" },
-              b: { text: "~14 dní", tone: "recovery" },
+              b: { text: "10–14 dní", tone: "recovery" },
             },
             {
               label: "Přesnost tepu",
-              a: { text: "Bezchybná", tone: "recovery" },
+              a: { text: "Velmi dobrá", tone: "recovery" },
               b: { text: "Velmi dobrá", tone: "recovery" },
             },
             {
@@ -211,11 +211,6 @@ export default function Page() {
           stejný spánek, a appka mi k tomu neřekla nic. To je celá slabina v
           kostce: <strong>dostal jsem číslo, ale ne důvod ani radu.</strong>
         </p>
-        <TodoNote>
-          Foto slot: screenshot BioCharge ze Zepp vedle Whoop Recovery ze
-          stejného rána (ideál). (Doplníš později.)
-        </TodoNote>
-
         <h2>Kde má Whoop navrch: od čísel k tomu, co s nimi</h2>
         <p>
           Tohle je pro mě celý důvod přechodu. Helio je hluboká, přesná
