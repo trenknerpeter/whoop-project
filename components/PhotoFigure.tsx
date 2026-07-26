@@ -39,7 +39,7 @@ export function PhotoFigure({
         className={
           single
             ? "flex justify-center"
-            : "grid grid-cols-2 gap-3 sm:grid-cols-3"
+            : "flex flex-wrap justify-center gap-3"
         }
       >
         {images.map((img) => (
@@ -49,7 +49,7 @@ export function PhotoFigure({
             onClick={() => setActive(img)}
             aria-label={`Zvětšit: ${img.alt}`}
             className={`group overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-widget ${
-              single ? "max-w-[240px]" : ""
+              single ? "max-w-[240px]" : "basis-[46%] sm:basis-auto"
             }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -57,7 +57,9 @@ export function PhotoFigure({
               src={img.src}
               alt={img.alt}
               loading="lazy"
-              className="h-64 w-full object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-72"
+              className={`h-64 object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-72 ${
+                single ? "w-full" : "w-full sm:w-auto"
+              }`}
             />
           </button>
         ))}
