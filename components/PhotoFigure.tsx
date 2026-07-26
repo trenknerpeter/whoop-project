@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Img = { src: string; alt: string };
 
@@ -21,7 +22,13 @@ export function PhotoFigure({
       if (e.key === "Escape") setActive(null);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    // Lock page scroll so the lightbox stays put and the image is centered.
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
   }, [active]);
 
   const single = images.length === 1;
@@ -61,25 +68,29 @@ export function PhotoFigure({
         </figcaption>
       )}
 
-      {active && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={active.alt}
-          onClick={() => setActive(null)}
-          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-anthracite/90 p-5 backdrop-blur-sm"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={active.src}
-            alt={active.alt}
-            className="max-h-[90vh] max-w-full rounded-2xl shadow-widget"
-          />
-          <span className="absolute right-5 top-5 text-2xl text-on-dark-soft">
-            ✕
-          </span>
-        </div>
-      )}
+      {active &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={active.alt}
+            onClick={() => setActive(null)}
+            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center overflow-hidden bg-anthracite/90 p-5 backdrop-blur-sm"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={active.src}
+              alt={active.alt}
+              style={{ maxHeight: "88vh", maxWidth: "92vw" }}
+              className="rounded-2xl object-contain shadow-widget"
+            />
+            <span className="absolute right-5 top-5 text-2xl text-on-dark-soft">
+              ✕
+            </span>
+          </div>,
+          document.body,
+        )}
     </figure>
   );
 }
