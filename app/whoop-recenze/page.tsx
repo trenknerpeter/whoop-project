@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArticleShell } from "@/components/ArticleShell";
 import { CompareTable } from "@/components/CompareTable";
 import { Faq, type QA } from "@/components/Faq";
-import { AsideNote, TodoNote } from "@/components/Note";
+import { AsideNote } from "@/components/Note";
 import { PhotoFigure } from "@/components/PhotoFigure";
 import { JsonLd, articleLd, faqLd } from "@/lib/jsonld";
 import { getArticle } from "@/lib/nav";
@@ -31,7 +31,7 @@ const faq: QA[] = [
   },
   {
     q: "Kolik stojí Whoop v roce 2026?",
-    a: "Platíš členství, ne hardware — náramek je v ceně. Základní tier Whoop One startuje zhruba na 199 €/rok, Peak (s biologickým věkem a Stress Monitorem) kolem 239 €/rok a nejvyšší Life s EKG a odhadem tlaku okolo 359 €/rok. Kompletní rozpad v korunách mám v článku kolik stojí Whoop.",
+    a: "Platíš členství, ne hardware — náramek je v ceně. Základní tier Whoop One startuje na 199 €/rok, Peak (s biologickým věkem a Stress Monitorem) vyjde na 264 €/rok a nejvyšší Life s EKG a odhadem tlaku na 399 €/rok. Kompletní rozpad v korunách mám v článku kolik stojí Whoop.",
   },
   {
     q: "Jak dlouho vydrží baterie a jak se nabíjí?",
@@ -92,6 +92,15 @@ export default function Page() {
           v reálném čase, ale o klidné ranní vyhodnocení, jak na tom jsi a co
           s tím dělat.
         </p>
+        <PhotoFigure
+          images={[
+            {
+              src: "/images/whoop-app-home.jpg",
+              alt: "Domovská obrazovka Whoop appky: Sleep 95 %, Recovery 36 %, Strain 5.0",
+            },
+          ]}
+          caption="Celá filozofie na jedné obrazovce: tři signály — spánek, regenerace, zátěž — plus krátké vysvětlení, proč mám dnešní Recovery nižší."
+        />
 
         <h2>Přesnost: tohle je jeho doména</h2>
         <p>
@@ -146,6 +155,19 @@ export default function Page() {
             },
           ]}
         />
+        <PhotoFigure
+          images={[
+            {
+              src: "/images/whoop-app-recovery.jpg",
+              alt: "Detail Recovery: HRV 18, klidový tep 51, dýchání 17,4, spánek 95 %",
+            },
+            {
+              src: "/images/whoop-app-sleep.jpg",
+              alt: "Detail spánku: 95 % výkon, konzistence, efektivita, spánkový stres",
+            },
+          ]}
+          caption="Čísla, z kterých Recovery vzniká: HRV, klidový tep, dýchání a rozpad spánku. Přesně tyhle metriky nezávislé testy hodnotí jako nejpřesnější."
+        />
         <AsideNote title="Chceš tvrdá data o přesnosti?">
           Nejpoctivější nezávislé testy nosí{" "}
           <a
@@ -170,11 +192,19 @@ export default function Page() {
           pásek</strong> (u Peaku SuperKnit) je tak pohodlný, že je radost ho
           nosit i ve spánku. Prostě na něj zapomeneš.
         </p>
-        <TodoNote>
-          Sem foto náramku na zápěstí a detail grafitového úpletového pásku —
-          přesně to, co se nedá popsat slovy. Ideálně i srovnání velikosti vedle
-          Helio / Fitbitu.
-        </TodoNote>
+        <PhotoFigure
+          images={[
+            {
+              src: "/images/whoop-wrist.jpg",
+              alt: "Whoop 5.0 na zápěstí — grafitový úpletový pásek a kovová spona s logem",
+            },
+            {
+              src: "/images/whoop-strap.jpg",
+              alt: "Whoop 5.0 zblízka — samotný senzor v grafitovém SuperKnit pásku",
+            },
+          ]}
+          caption="Grafitový SuperKnit pásek Peaku — bez displeje, jen senzor a úplet. Na ruce ho po chvíli přestaneš vnímat."
+        />
 
         <h2>Dobíjení na zápěstí: malý detail, velký rozdíl</h2>
         <p>
@@ -186,10 +216,6 @@ export default function Page() {
           powerbank sám drží náboj na několik dobití. Nabíjení bez rituálů, bez
           děr v datech.
         </p>
-        <TodoNote>
-          Sem foto dobíjení — powerbank nasunutý na náramku přímo na ruce. Je to
-          jedna z věcí, co Whoop dělá líp než všichni ostatní.
-        </TodoNote>
 
         <h2>Software a insighty: tady je pár let náskok znát</h2>
         <p>
@@ -222,25 +248,25 @@ export default function Page() {
         <PhotoFigure
           images={[
             {
-              src: "/images/whoop-running-1.jpg",
-              alt: "Whoop běh: trasa, tempo a zpráva od AI kouče",
+              src: "/images/whoop-app-strain.jpg",
+              alt: "Detail Strain 13.7 s tepovými zónami, kroky a větou od kouče",
             },
             {
-              src: "/images/whoop-running-2.jpg",
-              alt: "Whoop běh: zátěž (Strain) a tepové zóny",
+              src: "/images/whoop-app-trends.jpg",
+              alt: "Denní aktivity (cycling) a týdenní trend zátěže Strain",
             },
           ]}
-          caption="Whoop u běhu: vedle čísel (Strain, tepové zóny) přidá i větu od AI kouče. Přesně ten kontext, který samotná data nedají."
+          caption="Vedle čísel (Strain, tepové zóny, aktivity) přidá Whoop i větu, co znamenají, a týdenní trendy. Přesně ten kontext, který samotná data nedají."
         />
 
         <h2>Předplatné a cena</h2>
         <p>
           Jádro každé námitky. Whoop hardware neprodává — platíš členství a
-          náramek je v ceně. Základní <strong>Whoop One</strong> startuje zhruba
-          na 199 €/rok, <strong>Peak</strong> (na kterém jsem já) přidává
-          biologický věk a Stress Monitor kolem 239 €/rok a nejvyšší{" "}
-          <strong>Life</strong> s EKG a odhadem krevního tlaku vyjde okolo
-          359 €/rok. Za tři čtyři roky se dostaneš na cenu prémiových hodinek —
+          náramek je v ceně. Základní <strong>Whoop One</strong> startuje na
+          199 €/rok, <strong>Peak</strong> (na kterém jsem já) přidává
+          biologický věk a Stress Monitor za 264 €/rok a nejvyšší{" "}
+          <strong>Life</strong> s EKG a odhadem krevního tlaku vyjde na
+          399 €/rok. Za tři čtyři roky se dostaneš na cenu prémiových hodinek —
           jen ti na konci nezůstane hardware.
         </p>
         <CompareTable
@@ -249,8 +275,8 @@ export default function Page() {
           rows={[
             {
               label: "Cena / rok",
-              a: { text: "~199 €", tone: "recovery" },
-              b: { text: "~239 €", tone: "warn" },
+              a: { text: "199 €", tone: "recovery" },
+              b: { text: "264 €", tone: "warn" },
             },
             {
               label: "Recovery, Strain, spánek",
