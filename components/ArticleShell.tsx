@@ -12,6 +12,8 @@ type Props = {
   // Show a compact CTA button in the masthead, above the fold — for money
   // pages where the reader shouldn't have to scroll to convert.
   heroCta?: boolean;
+  // Optional decorative art rendered behind the masthead title (text-free).
+  mastheadBg?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -32,6 +34,7 @@ export function ArticleShell({
   source,
   showCTA = true,
   heroCta = false,
+  mastheadBg,
   children,
 }: Props) {
   const date = formatDate(updated);
@@ -39,30 +42,39 @@ export function ArticleShell({
     <div className="mx-auto max-w-4xl px-5 pb-14 pt-2">
       <article className="animate-rise overflow-hidden rounded-3xl bg-surface shadow-widget">
         {/* Anthracite masthead */}
-        <header className="bg-anthracite px-7 pb-11 pt-13 sm:px-10 sm:pt-14">
-          <p className="font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-blue">
-            {kicker}
-          </p>
-          <h1 className="mt-3.5 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.02em] text-on-dark sm:text-[2.4rem]">
-            {title}
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
-            {standfirst}
-          </p>
-          {date && (
-            <p className="mt-4 text-sm text-on-dark-faint">Aktualizováno {date}</p>
+        <header className="relative overflow-hidden bg-anthracite px-7 pb-11 pt-13 sm:px-10 sm:pt-14">
+          {mastheadBg && (
+            <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+              {mastheadBg}
+            </div>
           )}
-          {heroCta && (
-            <a
-              href={`/go?src=${encodeURIComponent(source)}-hero`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-green px-6 py-3 font-display text-[0.95rem] font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
-            >
-              {REFERRAL_DEAL.button}
-              <span aria-hidden>→</span>
-            </a>
-          )}
+          <div className="relative">
+            <p className="font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-blue">
+              {kicker}
+            </p>
+            <h1 className="mt-3.5 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.02em] text-on-dark sm:text-[2.4rem]">
+              {title}
+            </h1>
+            <p className="mt-4 max-w-[46ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
+              {standfirst}
+            </p>
+            {date && (
+              <p className="mt-4 text-sm text-on-dark-faint">
+                Aktualizováno {date}
+              </p>
+            )}
+            {heroCta && (
+              <a
+                href={`/go?src=${encodeURIComponent(source)}-hero`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-green px-6 py-3 font-display text-[0.95rem] font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
+              >
+                {REFERRAL_DEAL.button}
+                <span aria-hidden>→</span>
+              </a>
+            )}
+          </div>
         </header>
 
         {/* White prose body */}

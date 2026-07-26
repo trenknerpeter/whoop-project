@@ -4,7 +4,7 @@ import { CompareTable } from "@/components/CompareTable";
 import { Faq, type QA } from "@/components/Faq";
 import { AsideNote } from "@/components/Note";
 import { PhotoFigure } from "@/components/PhotoFigure";
-import { HelioVsWhoopHero } from "@/components/HelioVsWhoopHero";
+import { HelioMastheadBg } from "@/components/HelioMastheadBg";
 import { JsonLd, articleLd, faqLd } from "@/lib/jsonld";
 import { getArticle } from "@/lib/nav";
 
@@ -53,8 +53,8 @@ export default function Page() {
         standfirst="Stejný koncept — žádný displej, měření 24/7, ranní číslo v appce. Úplně jiný obchodní model: Whoop chce předplatné, Helio jednu platbu. Helio jsem nosil přes rok, tohle je upřímné srovnání."
         updated={meta.updated}
         source="compare-helio"
+        mastheadBg={<HelioMastheadBg />}
       >
-        <HelioVsWhoopHero />
         <p>
           Amazfit Helio Strap přišel v létě 2025 s jasnou ambicí: být „Whoop
           killer". Vzal koncept náramku bez displeje a škrtl to, co lidem na
