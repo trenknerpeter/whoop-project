@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  for (const a of articles) {
+  for (const a of articles.filter((a) => a.published)) {
     routes.push({
       url: `${site.url}/${a.slug}`,
       lastModified: new Date(a.updated),

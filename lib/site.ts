@@ -1,7 +1,7 @@
 // Central config. Fill in the real values before launch (see plan: decisions at build time).
 
 export const site = {
-  name: "Whoop deník",
+  name: "Whoop Journal",
   // TODO(peter): set the real domain once purchased (leaning whoopdenik.cz).
   url: "https://example.com",
   author: "Peter",

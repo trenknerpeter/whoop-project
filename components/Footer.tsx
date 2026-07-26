@@ -18,7 +18,7 @@ export function Footer() {
           <nav className="text-sm">
             <p className="font-display font-semibold text-ink">Články</p>
             <ul className="mt-3 space-y-2">
-              {articles.slice(0, 5).map((a) => (
+              {articles.filter((a) => a.published).map((a) => (
                 <li key={a.slug}>
                   <Link
                     href={`/${a.slug}`}

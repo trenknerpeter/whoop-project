@@ -9,6 +9,10 @@ export type Article = {
   excerpt: string;
   updated: string; // ISO date, also used in sitemap lastModified
   isWhoop: boolean;
+  // Whether the article is live: drives the homepage grid, footer list and
+  // sitemap. Drafts stay in the array (so their route + getArticle still work)
+  // but are hidden from listings until the content is written.
+  published: boolean;
 };
 
 export const articles: Article[] = [
@@ -21,16 +25,7 @@ export const articles: Article[] = [
       "Náramek bez displeje za předplatné. Dává to smysl? Úvodní recenze po návratu na tier Peak — přesnost, appka i cena.",
     updated: "2026-07-20",
     isWhoop: true,
-  },
-  {
-    slug: "whoop-vs-fitbit",
-    title: "Whoop vs Fitbit: nosil jsem obojí",
-    nav: "Whoop vs Fitbit",
-    kicker: "Srovnání",
-    excerpt:
-      "Dvě úplně jiné filozofie měření. Kde Fitbit vyhrává a kdy má smysl připlatit si za Whoop.",
-    updated: "2026-07-18",
-    isWhoop: true,
+    published: true,
   },
   {
     slug: "whoop-vs-helio",
@@ -41,6 +36,18 @@ export const articles: Article[] = [
       "Rok s Helio Strapem, pak přechod na Whoop. Skvělá a přesná data vs chytré insighty — a co reálně stojí za ty peníze.",
     updated: "2026-07-25",
     isWhoop: true,
+    published: true,
+  },
+  {
+    slug: "whoop-vs-fitbit",
+    title: "Whoop vs Fitbit Air: nosil jsem obojí",
+    nav: "Whoop vs Fitbit",
+    kicker: "Srovnání",
+    excerpt:
+      "Google Fitbit Air je taky náramek bez displeje — jen mnohem casual. Nejpohodlnější z celé kategorie, ale mělčí data a AI kouč za předplatné.",
+    updated: "2026-07-26",
+    isWhoop: true,
+    published: true,
   },
   {
     slug: "whoop-cena",
@@ -51,6 +58,7 @@ export const articles: Article[] = [
       "Rozpad ceny předplatného v korunách, jednotlivé plány a jak si měsíce zdarma reálně snížit náklady.",
     updated: "2026-07-15",
     isWhoop: true,
+    published: false,
   },
   {
     slug: "jak-funguje-recovery",
@@ -61,6 +69,7 @@ export const articles: Article[] = [
       "HRV, klidový tep a spánek přeložené do jednoho procenta. Jak ho číst a čemu nevěřit.",
     updated: "2026-07-12",
     isWhoop: true,
+    published: false,
   },
   {
     slug: "zkusenosti",
@@ -71,17 +80,28 @@ export const articles: Article[] = [
       "Průběžné poznámky, jak se moje zkušenost s Whoopem měnila v čase. Aktualizuji každý měsíc.",
     updated: "2026-07-22",
     isWhoop: true,
+    published: false,
   },
 ];
 
 // The money page lives on its own — it's a CTA hub, not a diary entry.
 export const dealSlug = "whoop-zdarma";
 
-export const primaryNav = [
+export type NavItem = {
+  label: string;
+  href?: string;
+  children?: { href: string; label: string }[];
+};
+
+// The two comparison articles, shown as a dropdown under "Srovnání".
+export const compareNav = [
+  { href: "/whoop-vs-helio", label: "Whoop 5.0 vs Helio Strap" },
+  { href: "/whoop-vs-fitbit", label: "Whoop 5.0 vs Fitbit Air" },
+];
+
+export const primaryNav: NavItem[] = [
   { href: "/whoop-recenze", label: "Recenze" },
-  { href: "/whoop-vs-helio", label: "Srovnání" },
-  { href: "/whoop-cena", label: "Cena" },
-  { href: "/zkusenosti", label: "Deník" },
+  { label: "Srovnání", children: compareNav },
   { href: `/${dealSlug}`, label: "Měsíc zdarma" },
 ];
 

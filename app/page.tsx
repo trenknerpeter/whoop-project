@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { articles, dealSlug } from "@/lib/nav";
 import { site } from "@/lib/site";
-import { TodoNote } from "@/components/Note";
 import { JsonLd } from "@/lib/jsonld";
 
 const siteLd = {
@@ -26,7 +25,7 @@ export default function Home() {
             Osobní deník
           </p>
           <h1 className="mt-3 max-w-[22ch] font-display text-[2.1rem] font-semibold leading-[1.06] tracking-[-0.02em] text-on-dark sm:text-[2.75rem]">
-            Nosím fitness náramky tak dlouho, až vím, které stojí za ty peníze.
+            Whoop je prostě to nejlepší, co na trhu je.
           </h1>
           <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
             Fitbit, Helio Strap, teď Whoop 5.0. Píšu si sem, co mi který kus
@@ -50,7 +49,7 @@ export default function Home() {
         </div>
 
         <div className="grid gap-x-9 gap-y-8 px-7 py-9 sm:grid-cols-2 sm:px-10">
-          {articles.map((a) => (
+          {articles.filter((a) => a.published).map((a) => (
             <Link key={a.slug} href={`/${a.slug}`} className="group block">
               <p className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-deep">
                 {a.kicker}
@@ -65,11 +64,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <TodoNote>
-        Sem přijde tvoje reálné foto — náramek na zápěstí nebo screenshot z appky.
-        Autentické fotky výrazně zvednou důvěryhodnost i SEO.
-      </TodoNote>
 
       {/* Why this blog */}
       <section className="mt-6 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:px-10">
