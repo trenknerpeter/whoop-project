@@ -136,11 +136,95 @@ body {
   animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/*
+  Homepage hero animation kit. Everything animates transform / opacity /
+  stroke-dashoffset only (compositor-friendly, no layout work), and every
+  one-shot animation lands on its final state via `forwards`/`both` so the
+  art also reads correctly as a still frame.
+*/
+@keyframes ecg-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ring-fill {
+  to {
+    stroke-dashoffset: var(--ring-final, 10);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+.animate-ecg-draw {
+  animation: ecg-draw 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+}
+.animate-ring-fill {
+  animation: ring-fill 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+}
+.animate-breathe {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 6s ease-in-out infinite;
+}
+.animate-fade-late {
+  animation: fade-in 0.6s ease-out 2.1s forwards;
+}
+/* Staggered variants of `rise` for the hero metric chips. */
+.animate-rise-1 {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.2s both;
+}
+.animate-rise-2 {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.45s both;
+}
+.animate-rise-3 {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.7s both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .animate-rise {
+  .animate-rise,
+  .animate-rise-1,
+  .animate-rise-2,
+  .animate-rise-3,
+  .animate-ecg-draw,
+  .animate-ring-fill,
+  .animate-breathe,
+  .animate-fade-late {
     animation: none;
+  }
+  /*
+    One-shot animations start from an invisible state (dashed-out strokes,
+    opacity 0), so with `animation: none` we must force their final frames
+    or the art would simply be missing for reduced-motion visitors.
+  */
+  .animate-ecg-draw {
+    stroke-dashoffset: 0;
+  }
+  .animate-ring-fill {
+    stroke-dashoffset: var(--ring-final, 10);
+  }
+  .animate-fade-late {
+    opacity: 1;
+  }
+  .animate-rise-1,
+  .animate-rise-2,
+  .animate-rise-3 {
+    opacity: 1;
+    transform: none;
   }
 }

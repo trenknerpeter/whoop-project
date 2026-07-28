@@ -2,6 +2,7 @@ import Link from "next/link";
 import { articles, dealSlug } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/lib/jsonld";
+import { HomeMastheadBg } from "@/components/HomeMastheadBg";
 
 const siteLd = {
   "@context": "https://schema.org",
@@ -20,34 +21,52 @@ export default function Home() {
 
       {/* Hero widget: anthracite intro + article grid */}
       <section className="animate-rise overflow-hidden rounded-3xl bg-surface shadow-widget">
-        <div className="bg-anthracite px-7 py-12 sm:px-10 sm:py-14">
-          <p className="font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-blue">
-            Osobní deník
-          </p>
-          <h1 className="mt-3 max-w-[22ch] font-display text-[2.1rem] font-semibold leading-[1.06] tracking-[-0.02em] text-on-dark sm:text-[2.75rem]">
-            Whoop je prostě to nejlepší, co na trhu je.
-          </h1>
-          <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
-            Fitbit, Helio Strap, teď Whoop 5.0. Píšu si sem, co mi který kus
-            reálně dal — bez marketingových keců a bez skóre za deset z deseti u
-            všeho.
-          </p>
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href="/go?src=hero"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 font-display text-sm font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
-            >
-              Aktivovat měsíc zdarma
-              <span aria-hidden>→</span>
-            </a>
-            <Link
-              href={`/${dealSlug}`}
-              className="rounded-full border border-[#4a5058] px-5 py-2.5 text-sm font-medium text-[#c9cdd2] transition-colors hover:border-green hover:text-green"
-            >
-              Jak získat měsíc zdarma
-            </Link>
+        <div className="relative flex flex-col justify-center overflow-hidden bg-anthracite px-7 py-12 sm:min-h-[max(540px,65vh)] sm:px-10 sm:py-14">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <HomeMastheadBg />
+          </div>
+          <div className="relative">
+            <p className="font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-blue">
+              Osobní deník
+            </p>
+            {/* Alt headline, swap if the diary tone should lead:
+                "Tělo mluví. Whoop překládá." */}
+            <h1 className="mt-3 max-w-[16ch] font-display text-[2.1rem] font-semibold leading-[1.06] tracking-[-0.02em] text-on-dark sm:text-[3.2rem]">
+              Tři náramky. Jedno zápěstí. Vyhrál Whoop.
+            </h1>
+            <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
+              Fitbit, Helio Strap, teď Whoop 5.0. Píšu si sem, co mi který kus
+              reálně dal — bez marketingových keců a bez skóre za deset z
+              deseti u všeho.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <span className="animate-rise-1 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[0.8rem] font-medium text-on-dark-soft">
+                Spánek 95 %
+              </span>
+              <span className="animate-rise-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[0.8rem] font-medium text-on-dark-soft">
+                Zátěž 13.7
+              </span>
+              <span className="animate-rise-3 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[0.8rem] font-medium text-on-dark-soft">
+                Klidový tep 51
+              </span>
+            </div>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <a
+                href="/go?src=hero"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 font-display text-sm font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
+              >
+                Aktivovat měsíc zdarma
+                <span aria-hidden>→</span>
+              </a>
+              <Link
+                href={`/${dealSlug}`}
+                className="rounded-full border border-[#4a5058] px-5 py-2.5 text-sm font-medium text-[#c9cdd2] transition-colors hover:border-green hover:text-green"
+              >
+                Jak získat měsíc zdarma
+              </Link>
+            </div>
           </div>
         </div>
 
