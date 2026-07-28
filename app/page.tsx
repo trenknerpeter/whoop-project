@@ -33,12 +33,15 @@ export default function Home() {
             všeho.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Link
-              href="/whoop-recenze"
-              className="rounded-full bg-green px-5 py-2.5 font-display text-sm font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
+            <a
+              href="/go?src=hero"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 font-display text-sm font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
             >
-              Přečíst recenzi Whoopu
-            </Link>
+              Aktivovat měsíc zdarma
+              <span aria-hidden>→</span>
+            </a>
             <Link
               href={`/${dealSlug}`}
               className="rounded-full border border-[#4a5058] px-5 py-2.5 text-sm font-medium text-[#c9cdd2] transition-colors hover:border-green hover:text-green"
