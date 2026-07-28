@@ -173,17 +173,20 @@ body {
   }
 }
 /*
-  One band is visible at a time. The phase offsets applied per band (0 /
-  -18s / -13.5s) are chosen so exactly one band is opaque at t=0 — see the
-  note in HomeHeroVisual.tsx before changing anything here.
+  One band is visible at a time, cycling through three. The opaque window is
+  deliberately narrower than a third of the cycle (0-32 %), which is what lets
+  the three bands sit at even 1/3 phase offsets (0 / -9s / -18s at 27s) and
+  still satisfy both constraints: no moment where every band is transparent,
+  and only one band opaque at t=0 so the hero never opens on a double
+  exposure. Widening this window past 33 % breaks the second one.
 */
 @keyframes band-cycle {
   0%,
-  28% {
+  24% {
     opacity: 1;
   }
-  37%,
-  91% {
+  32%,
+  92% {
     opacity: 0;
   }
   100% {
