@@ -2,7 +2,7 @@ import Link from "next/link";
 import { articles, dealSlug } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/lib/jsonld";
-import { HomeMastheadBg } from "@/components/HomeMastheadBg";
+import { HomeHeroVisual } from "@/components/HomeHeroVisual";
 
 const siteLd = {
   "@context": "https://schema.org",
@@ -14,77 +14,100 @@ const siteLd = {
   publisher: { "@type": "Person", name: site.author },
 };
 
+// Real numbers off Peter's own Whoop, shown as proof rather than marketing.
+const chips = [
+  { label: "Spánek 95 %", dot: "bg-green" },
+  { label: "Zátěž 13.7", dot: "bg-blue" },
+  { label: "Klidový tep 51", dot: "bg-on-dark-soft" },
+];
+
 export default function Home() {
   return (
     <div className="mx-auto max-w-5xl px-5 pb-14 pt-2">
       <JsonLd data={siteLd} />
 
-      {/* Hero widget: anthracite intro + article grid */}
-      <section className="animate-rise overflow-hidden rounded-3xl bg-surface shadow-widget">
-        <div className="relative flex flex-col justify-center overflow-hidden bg-anthracite px-7 py-12 sm:min-h-[max(540px,65vh)] sm:px-10 sm:py-14">
-          <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <HomeMastheadBg />
+      {/* Hero widget: copy on the left, band visual on the right */}
+      <section className="animate-rise overflow-hidden rounded-3xl bg-anthracite shadow-widget sm:grid sm:min-h-[max(540px,65vh)] sm:grid-cols-[1.05fr_1fr]">
+        <div className="relative z-10 flex flex-col justify-center gap-[22px] px-7 py-14 sm:py-16 sm:pl-14 sm:pr-6">
+          <p
+            className="animate-rise font-display text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-blue"
+            style={{ animationDelay: "0s" }}
+          >
+            Osobní deník
+          </p>
+          <h1
+            className="animate-rise font-display text-[clamp(2.125rem,5.6vw,4.25rem)] font-bold leading-[1.04] tracking-[-0.02em] text-balance text-on-dark"
+            style={{ animationDelay: "0.1s" }}
+          >
+            Tělo mluví.
+            <br />
+            Whoop překládá.
+          </h1>
+          <p
+            className="animate-rise max-w-[46ch] text-[1.0625rem] leading-relaxed text-pretty text-on-dark-soft"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Nosím Whoop 5.0 každý den — spánek, regenerace, zátěž. Píšu si sem,
+            co mi reálně dává, bez marketingových keců.
+          </p>
+          <div className="mt-1 flex flex-wrap gap-2.5">
+            {chips.map((chip, i) => (
+              <span
+                key={chip.label}
+                className="animate-rise inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.06] px-4 py-2.5 text-sm font-medium text-on-dark backdrop-blur-[8px]"
+                style={{ animationDelay: `${0.35 + i * 0.15}s` }}
+              >
+                <span
+                  className={`h-[7px] w-[7px] shrink-0 rounded-full ${chip.dot}`}
+                  aria-hidden
+                />
+                {chip.label}
+              </span>
+            ))}
           </div>
-          <div className="relative">
-            <p className="font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-blue">
-              Osobní deník
-            </p>
-            {/* Alt headline, swap if the diary tone should lead:
-                "Tělo mluví. Whoop překládá." */}
-            <h1 className="mt-3 max-w-[16ch] font-display text-[2.1rem] font-semibold leading-[1.06] tracking-[-0.02em] text-on-dark sm:text-[3.2rem]">
-              Tři náramky. Jedno zápěstí. Vyhrál Whoop.
-            </h1>
-            <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-on-dark-soft">
-              Fitbit, Helio Strap, teď Whoop 5.0. Píšu si sem, co mi který kus
-              reálně dal — bez marketingových keců a bez skóre za deset z
-              deseti u všeho.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2.5">
-              <span className="animate-rise-1 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[0.8rem] font-medium text-on-dark-soft">
-                Spánek 95 %
-              </span>
-              <span className="animate-rise-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[0.8rem] font-medium text-on-dark-soft">
-                Zátěž 13.7
-              </span>
-              <span className="animate-rise-3 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[0.8rem] font-medium text-on-dark-soft">
-                Klidový tep 51
-              </span>
-            </div>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <a
-                href="/go?src=hero"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 font-display text-sm font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
-              >
-                Aktivovat měsíc zdarma
-                <span aria-hidden>→</span>
-              </a>
-              <Link
-                href={`/${dealSlug}`}
-                className="rounded-full border border-[#4a5058] px-5 py-2.5 text-sm font-medium text-[#c9cdd2] transition-colors hover:border-green hover:text-green"
-              >
-                Jak získat měsíc zdarma
-              </Link>
-            </div>
+          <div
+            className="animate-rise mt-3.5 flex flex-wrap items-center gap-3.5"
+            style={{ animationDelay: "0.8s" }}
+          >
+            <a
+              href="/go?src=hero"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 rounded-full bg-green px-[30px] py-4 font-display text-base font-semibold text-green-ink shadow-[0_10px_30px_-8px_rgba(25,217,146,0.55)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-8px_rgba(25,217,146,0.65)]"
+            >
+              Aktivovat měsíc zdarma
+              <span aria-hidden>→</span>
+            </a>
+            <Link
+              href={`/${dealSlug}`}
+              className="inline-flex items-center rounded-full border border-white/[0.22] px-[26px] py-[15px] text-[0.9375rem] font-medium text-[#e8ebee] transition-colors hover:border-white/50 hover:text-on-dark"
+            >
+              Jak získat měsíc zdarma
+            </Link>
           </div>
         </div>
 
-        <div className="grid gap-x-9 gap-y-8 px-7 py-9 sm:grid-cols-2 sm:px-10">
-          {articles.filter((a) => a.published).map((a) => (
-            <Link key={a.slug} href={`/${a.slug}`} className="group block">
-              <p className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-deep">
-                {a.kicker}
-              </p>
-              <h2 className="mt-2 font-display text-[1.2rem] font-semibold leading-snug text-ink transition-colors group-hover:text-green-deep">
-                {a.title}
-              </h2>
-              <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-muted">
-                {a.excerpt}
-              </p>
-            </Link>
-          ))}
+        {/* Band visual — desktop only; on mobile the copy carries the hero */}
+        <div className="hidden sm:block">
+          <HomeHeroVisual />
         </div>
+      </section>
+
+      {/* Article listing */}
+      <section className="mt-6 grid gap-x-9 gap-y-8 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:grid-cols-2 sm:px-10">
+        {articles.filter((a) => a.published).map((a) => (
+          <Link key={a.slug} href={`/${a.slug}`} className="group block">
+            <p className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-deep">
+              {a.kicker}
+            </p>
+            <h2 className="mt-2 font-display text-[1.2rem] font-semibold leading-snug text-ink transition-colors group-hover:text-green-deep">
+              {a.title}
+            </h2>
+            <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-muted">
+              {a.excerpt}
+            </p>
+          </Link>
+        ))}
       </section>
 
       {/* Why this blog */}

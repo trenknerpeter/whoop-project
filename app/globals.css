@@ -140,27 +140,18 @@ body {
   Homepage hero animation kit. Everything animates transform / opacity /
   stroke-dashoffset only (compositor-friendly, no layout work), and every
   one-shot animation lands on its final state via `forwards`/`both` so the
-  art also reads correctly as a still frame.
+  art also reads correctly as a still frame. Elements stagger in by pairing
+  `.animate-rise` with an inline animation-delay.
 */
 @keyframes ecg-draw {
   to {
     stroke-dashoffset: 0;
   }
 }
+/* 440 is the ring circumference; 44 left over reads as 90 % filled. */
 @keyframes ring-fill {
   to {
-    stroke-dashoffset: var(--ring-final, 10);
-  }
-}
-@keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.12);
+    stroke-dashoffset: 44;
   }
 }
 @keyframes fade-in {
@@ -168,29 +159,79 @@ body {
     opacity: 1;
   }
 }
+/*
+  Gentler than the design prototype's scale(1.02)->scale(1.14): our visual
+  column is ~480px rather than the ~700px the prototype assumed, so a 14 %
+  zoom pushed the band's lit clasp out of frame and left only dark strap.
+*/
+@keyframes kenburns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.06) translate(-8px, 5px);
+  }
+}
+/*
+  One band is visible at a time. The phase offsets applied per band (0 /
+  -18s / -13.5s) are chosen so exactly one band is opaque at t=0 — see the
+  note in HomeHeroVisual.tsx before changing anything here.
+*/
+@keyframes band-cycle {
+  0%,
+  28% {
+    opacity: 1;
+  }
+  37%,
+  91% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes breathe-a {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.12);
+  }
+}
+@keyframes breathe-b {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1.08);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
 .animate-ecg-draw {
-  animation: ecg-draw 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+  animation: ecg-draw 3s ease-out 0.6s forwards;
 }
 .animate-ring-fill {
-  animation: ring-fill 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
-}
-.animate-breathe {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: breathe 6s ease-in-out infinite;
+  animation: ring-fill 2.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.8s forwards;
 }
 .animate-fade-late {
-  animation: fade-in 0.6s ease-out 2.1s forwards;
+  animation: fade-in 0.8s ease-out 2.6s both;
 }
-/* Staggered variants of `rise` for the hero metric chips. */
-.animate-rise-1 {
-  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.2s both;
+.animate-kenburns {
+  animation: kenburns 28s ease-in-out infinite alternate;
 }
-.animate-rise-2 {
-  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.45s both;
+.animate-band-cycle {
+  animation: band-cycle 27s ease-in-out infinite;
 }
-.animate-rise-3 {
-  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.7s both;
+.animate-breathe-a {
+  animation: breathe-a 9s ease-in-out infinite;
+}
+.animate-breathe-b {
+  animation: breathe-b 11s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -198,13 +239,13 @@ body {
     scroll-behavior: auto;
   }
   .animate-rise,
-  .animate-rise-1,
-  .animate-rise-2,
-  .animate-rise-3,
   .animate-ecg-draw,
   .animate-ring-fill,
-  .animate-breathe,
-  .animate-fade-late {
+  .animate-fade-late,
+  .animate-kenburns,
+  .animate-band-cycle,
+  .animate-breathe-a,
+  .animate-breathe-b {
     animation: none;
   }
   /*
@@ -216,15 +257,18 @@ body {
     stroke-dashoffset: 0;
   }
   .animate-ring-fill {
-    stroke-dashoffset: var(--ring-final, 10);
+    stroke-dashoffset: 44;
   }
+  .animate-rise,
   .animate-fade-late {
     opacity: 1;
-  }
-  .animate-rise-1,
-  .animate-rise-2,
-  .animate-rise-3 {
-    opacity: 1;
     transform: none;
+  }
+  /* The crossfade can't run, so pin it to the black band only. */
+  .animate-band-cycle {
+    opacity: 0;
+  }
+  .animate-band-cycle:first-child {
+    opacity: 1;
   }
 }
