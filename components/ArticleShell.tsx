@@ -39,7 +39,7 @@ export function ArticleShell({
 }: Props) {
   const date = formatDate(updated);
   return (
-    <div className="mx-auto max-w-4xl px-5 pb-14 pt-2">
+    <div className="mx-auto max-w-5xl px-5 pb-14 pt-2">
       <article className="animate-rise overflow-hidden rounded-3xl bg-surface shadow-widget">
         {/* Anthracite masthead */}
         <header className="relative overflow-hidden bg-anthracite px-7 pb-11 pt-13 sm:px-10 sm:pt-14">

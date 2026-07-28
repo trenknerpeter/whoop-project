@@ -5,7 +5,7 @@ import { primaryNav, dealSlug } from "@/lib/nav";
 export function Header() {
   return (
     <header>
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-5 py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-5">
         <Link href="/" className="font-display text-lg font-semibold tracking-tight text-ink">
           {site.name}
         </Link>

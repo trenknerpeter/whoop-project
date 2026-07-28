@@ -14,13 +14,6 @@ const siteLd = {
   publisher: { "@type": "Person", name: site.author },
 };
 
-// Real numbers off Peter's own Whoop, shown as proof rather than marketing.
-const chips = [
-  { label: "Spánek 95 %", dot: "bg-green" },
-  { label: "Zátěž 13.7", dot: "bg-blue" },
-  { label: "Klidový tep 51", dot: "bg-on-dark-soft" },
-];
-
 export default function Home() {
   return (
     <>
@@ -38,8 +31,8 @@ export default function Home() {
             right edge. Hidden below lg, where the copy carries the hero alone. */}
         <HomeHeroVisual />
 
-        <div className="mx-auto max-w-5xl px-5">
-          <div className="relative z-10 flex flex-col justify-center gap-[22px] py-16 lg:min-h-[max(620px,68vh)] lg:max-w-[31rem] lg:py-20">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="relative z-10 flex flex-col justify-center gap-[22px] py-16 lg:min-h-[max(620px,68vh)] lg:max-w-[32rem] lg:py-20 xl:max-w-[40rem]">
             <p
               className="animate-rise font-display text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-blue"
               style={{ animationDelay: "0s" }}
@@ -58,27 +51,12 @@ export default function Home() {
               className="animate-rise max-w-[46ch] text-[1.0625rem] leading-relaxed text-pretty text-on-dark-soft"
               style={{ animationDelay: "0.2s" }}
             >
-              Nosím Whoop 5.0 každý den — spánek, regenerace, zátěž. Píšu si
-              sem, co mi reálně dává, bez marketingových keců.
+              Nosím ho každý den a zapisuju, co mi reálně změnil — spánek,
+              tréninky, energii.
             </p>
-            <div className="mt-1 flex flex-wrap gap-2.5">
-              {chips.map((chip, i) => (
-                <span
-                  key={chip.label}
-                  className="animate-rise inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.06] px-4 py-2.5 text-sm font-medium text-on-dark backdrop-blur-[8px]"
-                  style={{ animationDelay: `${0.35 + i * 0.15}s` }}
-                >
-                  <span
-                    className={`h-[7px] w-[7px] shrink-0 rounded-full ${chip.dot}`}
-                    aria-hidden
-                  />
-                  {chip.label}
-                </span>
-              ))}
-            </div>
             <div
-              className="animate-rise mt-3.5 flex flex-wrap items-center gap-3.5"
-              style={{ animationDelay: "0.8s" }}
+              className="animate-rise mt-3.5 flex flex-wrap items-center gap-3.5 sm:flex-nowrap"
+              style={{ animationDelay: "0.35s" }}
             >
               <a
                 href="/go?src=hero"
@@ -100,7 +78,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-5xl px-5 pb-14">
+      <div className="mx-auto max-w-7xl px-5 pb-14">
         {/* Article listing */}
         <section className="mt-6 grid gap-x-9 gap-y-8 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:grid-cols-2 sm:px-10">
           {articles

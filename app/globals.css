@@ -148,10 +148,13 @@ body {
     stroke-dashoffset: 0;
   }
 }
-/* 440 is the ring circumference; 44 left over reads as 90 % filled. */
+/*
+  440 is the ring circumference, so the leftover offset encodes the score:
+  each ring sets its own `--ring-final` (e.g. 18 reads as 96 % filled).
+*/
 @keyframes ring-fill {
   to {
-    stroke-dashoffset: 44;
+    stroke-dashoffset: var(--ring-final, 44);
   }
 }
 @keyframes fade-in {
@@ -260,7 +263,7 @@ body {
     stroke-dashoffset: 0;
   }
   .animate-ring-fill {
-    stroke-dashoffset: 44;
+    stroke-dashoffset: var(--ring-final, 44);
   }
   .animate-rise,
   .animate-fade-late {

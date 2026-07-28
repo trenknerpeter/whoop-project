@@ -43,6 +43,91 @@ const BANDS = [
 const ECG_PATH =
   "M0,80 H170 L192,70 L204,88 L216,80 H258 L270,80 L282,18 L294,132 L306,80 H346 L358,62 L370,94 L382,80 H640";
 
+// The Whoop app's three headline scores, in the app's own left-to-right order
+// and tones: pale steel blue for sleep, recovery green, strain blue. `offset` is
+// the leftover stroke-dashoffset against a 440 circumference, so it encodes how
+// full each arc sits — strain is scored out of 21, not 100, hence 11.7 -> 56 %.
+const RINGS = [
+  {
+    label: "Spánek",
+    value: "96 %",
+    color: "#93B4CE",
+    offset: 18,
+    delay: 0,
+  },
+  {
+    label: "Recovery",
+    value: "78 %",
+    color: "#19D992",
+    offset: 97,
+    delay: 0.15,
+  },
+  {
+    label: "Zátěž",
+    value: "11.7",
+    color: "#4DA8F0",
+    offset: 195,
+    delay: 0.3,
+  },
+];
+
+function ScoreRing({
+  label,
+  value,
+  color,
+  offset,
+  delay,
+}: (typeof RINGS)[number]) {
+  return (
+    <div className="relative h-[104px] w-[104px] xl:h-[120px] xl:w-[120px]">
+      {/* Soft scrim: the band cycles through black, green and light blue, so
+          without a darker base the rings and their labels wash out on the
+          lighter straps. Fades to nothing, so it reads as glow, not a plate. */}
+      <div className="absolute inset-[-20%] rounded-full bg-[radial-gradient(circle,rgba(18,21,25,0.8)_38%,rgba(18,21,25,0)_72%)]" />
+      <svg viewBox="0 0 160 160" className="relative h-full w-full -rotate-90">
+        <circle
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="rgba(255,255,255,.12)"
+          strokeWidth="9"
+        />
+        <circle
+          className="animate-ring-fill"
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke={color}
+          strokeWidth="9"
+          strokeLinecap="round"
+          strokeDasharray={440}
+          strokeDashoffset={440}
+          style={
+            {
+              "--ring-final": offset,
+              animationDelay: `${0.8 + delay}s`,
+              filter: `drop-shadow(0 0 8px ${color}66)`,
+            } as React.CSSProperties
+          }
+        />
+      </svg>
+      <div
+        className="animate-fade-late absolute inset-0 flex flex-col items-center justify-center gap-0.5"
+        style={{ animationDelay: `${2.6 + delay}s` }}
+      >
+        <div className="font-display text-[19px] font-bold leading-none text-on-dark drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)] xl:text-[22px]">
+          {value}
+        </div>
+        <div className="text-[8px] uppercase tracking-[0.18em] text-on-dark-soft drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] xl:text-[9px]">
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Right-anchored box shared by the band, the ECG and the ring. Capped so the
 // band can't become a billboard on ultra-wide displays.
 const BAND_BOX = "absolute inset-y-0 right-0 w-[46%] max-w-[880px]";
@@ -99,43 +184,11 @@ export function HomeHeroVisual() {
           />
         </svg>
 
-        {/* Recovery ring */}
-        <div className="absolute right-[8%] top-[10%] h-[118px] w-[118px] xl:h-[150px] xl:w-[150px]">
-          {/* Soft scrim: the band cycles through black, green and light blue, so
-              without a darker base the ring and its label wash out on the light
-              straps. Fades to nothing, so it reads as glow rather than a plate. */}
-          <div className="absolute inset-[-22%] rounded-full bg-[radial-gradient(circle,rgba(18,21,25,0.78)_36%,rgba(18,21,25,0)_70%)]" />
-          <svg viewBox="0 0 160 160" className="relative h-full w-full -rotate-90">
-            <circle
-              cx="80"
-              cy="80"
-              r="70"
-              fill="none"
-              stroke="rgba(255,255,255,.1)"
-              strokeWidth="7"
-            />
-            <circle
-              className="animate-ring-fill"
-              cx="80"
-              cy="80"
-              r="70"
-              fill="none"
-              stroke="#19D992"
-              strokeWidth="7"
-              strokeLinecap="round"
-              strokeDasharray={440}
-              strokeDashoffset={440}
-              style={{ filter: "drop-shadow(0 0 8px rgba(25,217,146,.55))" }}
-            />
-          </svg>
-          <div className="animate-fade-late absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-            <div className="font-display text-[24px] font-bold leading-none text-on-dark drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] xl:text-[30px]">
-              90 %
-            </div>
-            <div className="text-[9px] uppercase tracking-[0.24em] text-on-dark-soft drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] xl:text-[10px]">
-              Recovery
-            </div>
-          </div>
+        {/* Score rings — the app's summary row, floating over the band */}
+        <div className="absolute left-1/2 top-[8%] flex -translate-x-1/2 gap-2.5 xl:gap-4">
+          {RINGS.map((ring) => (
+            <ScoreRing key={ring.label} {...ring} />
+          ))}
         </div>
       </div>
     </div>
