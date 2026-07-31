@@ -34,7 +34,9 @@ export function CompareTable({
   rows: Row[];
 }) {
   return (
-    <div className="not-prose my-8 overflow-hidden rounded-2xl border border-line">
+    // overflow-x-auto, not overflow-hidden: on narrow screens the third column
+    // is wider than the container, and hiding it dropped it silently.
+    <div className="not-prose my-8 overflow-x-auto rounded-2xl border border-line">
       <table className="w-full border-collapse text-left text-[0.95rem]">
         <thead>
           <tr className="border-b border-line bg-surface-muted">

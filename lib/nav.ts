@@ -22,8 +22,8 @@ export const articles: Article[] = [
     nav: "Recenze",
     kicker: "Recenze",
     excerpt:
-      "Náramek bez displeje za předplatné. Dává to smysl? Úvodní recenze po návratu na tier Peak — přesnost, appka i cena.",
-    updated: "2026-07-20",
+      "Loni jsem ho po měsíci odložil, teď jsem zpátky na Peaku. Přesnost tepu, komfort pásku, výdrž 10 dní a co mi vadí na Coachovi.",
+    updated: "2026-07-31",
     isWhoop: true,
     published: true,
   },

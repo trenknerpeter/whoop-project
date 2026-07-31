@@ -11,7 +11,7 @@ const slug = "whoop-recenze";
 const meta = getArticle(slug)!;
 const title = "Whoop 5.0 recenze: proč jsem se k němu vrátil";
 const description =
-  "Náramek bez displeje za měsíční předplatné. Přesnost tepu a spánku, jak sedí na ruce, dobíjení za nošení, appka a biologický věk — úvodní recenze po návratu na tier Peak.";
+  "Přesnost tepu, komfort pásku, výdrž 10 dní a jestli roční členství dává smysl oproti jednorázové koupi jako Helio Strap nebo Fitbit Air — úvodní recenze po návratu na tier Peak.";
 
 export const metadata: Metadata = {
   title,
@@ -23,23 +23,27 @@ export const metadata: Metadata = {
 const faq: QA[] = [
   {
     q: "Je Whoop 5.0 přesný?",
-    a: "U klidového tepu, spánku (délky) a dýchání patří k nejpřesnějším na trhu — potvrzují to i nezávislé testy The Quantified Scientist a recenzované studie. Slabší je při silovém tréninku a HIIT, kdy optický senzor na zápěstí měří tep hůř; vážní sportovci ho proto nosí na bicepsu. Mně tep na kardiu i v klidu seděl naprosto přesně.",
+    a: "U klidového tepu, spánku a dýchání patří k nejpřesnějším na trhu. Tester the5krunner naměřil korelaci 0,98 s hrudním pásem u běhu, kola i plavání a The Quantified Scientist srovnává wearables proti EKG a laboratornímu spánku, kde Whoop patří k nejlepším. Slabší je při silovém tréninku a HIIT, kdy optický senzor na zápěstí měří tep hůř; vážní sportovci ho proto nosí na bicepsu. Sám jsem dvě zařízení nikdy nenosil zároveň, ale proti Apple Watch, Helio Strapu i Fitbit Air mi při běžném nošení a běhu dává skoro stejná čísla.",
   },
   {
     q: "Vyplatí se Whoop bez displeje?",
-    a: "Chybějící displej je záměr — nekoukáš na zápěstí, ráno se podíváš do appky. Když chceš čas, notifikace nebo mapu z běhu na ruce, kup si chytré hodinky. Whoop je pro lidi, kterým jde o regeneraci, spánek a dlouhodobé zdraví, a nevadí jim data číst v telefonu.",
+    a: "Displej Whoop nemá záměrně — neřeší přehled na zápěstí, ale regeneraci a spánek, a to je jiný účel než u chytrých hodinek. Data se čtou ráno v telefonu. Mně zvykání odpadlo, protože jsem rok před Whoopem nosil Helio Strap, který displej taky nemá. Komu jde právě o čas a notifikace na ruce, tomu tenhle nástroj nic z toho nenahradí.",
   },
   {
     q: "Kolik stojí Whoop v roce 2026?",
-    a: "Platíš členství, ne hardware — náramek je v ceně. Základní tier Whoop One startuje na 199 €/rok, Peak (s biologickým věkem a Stress Monitorem) vyjde na 264 €/rok a nejvyšší Life s EKG a odhadem tlaku na 399 €/rok. Kompletní rozpad v korunách mám v článku kolik stojí Whoop.",
+    a: "Platí se členství, zařízení je v ceně. One €199 za rok, Peak (s Healthspanem a Stress Monitorem) €264 za rok, Life s EKG a odhadem tlaku €399 za rok. Členství je roční; měsíční platba se otevírá až po odslouženém dvanáctiměsíčním období.",
   },
   {
     q: "Jak dlouho vydrží baterie a jak se nabíjí?",
-    a: "Whoop udává až 14 dní, recenzenti reálně naměřili spíš 16–18 dní. Nabíjí se přisunutým bezdrátovým powerbankem přímo za nošení, takže náramek nikdy nesundáš — u zařízení, co měří spánek 24/7, je to zásadní.",
+    a: "Výrobce udává 14+ dní, mně vydrží 10 dní při nošení 24/7 a pravidelném sportu. Peak a Life se dobíjejí bezdrátovým PowerPackem, který se přisune na náramek za nošení, takže se náramek sundávat nemusí a v datech nevznikají mezery. One se dodává s drátovou nabíječkou, u něj to takhle nefunguje.",
   },
   {
-    q: "Pro koho je Whoop a pro koho ne?",
-    a: "Sedne sportovcům, biohackerům a všem, kdo chtějí optimalizovat výkon, spánek a dlouhověkost a rádi se řídí daty. Nedává smysl, když chceš glanceable chytré hodinky, jsi na začátku a nechceš platit měsíčně, nebo víš, že tě denní skóre bude spíš stresovat.",
+    q: "Kdy Whoop spočítá biologický věk?",
+    a: "WHOOP Age je součástí tieru Peak a aplikace ho odemkne po 21 zaznamenaných nocích.",
+  },
+  {
+    q: "Pro koho Whoop je a pro koho ne?",
+    a: "Sedne tomu, kdo chce sledovat spánek, regeneraci a zátěž a řídit se čísly. Nedává smysl, když chceš hodinky, na které se dá kouknout jedním pohledem, nebo když víš, že tě denní skóre bude spíš stresovat.",
   },
 ];
 
@@ -53,44 +57,19 @@ export default function Page() {
       <ArticleShell
         kicker="Recenze"
         title="Whoop 5.0: proč jsem se k němu vrátil"
-        standfirst="Náramek, který nic neukazuje a k tomu si za něj platíš každý měsíc. Loni jsem ho měl měsíc a odložil. Teď jsem zpátky — na tieru Peak — a tohle je moje úvodní recenze, než naskočí dlouhodobá data."
+        standfirst="Loni jsem Whoop po měsíci odložil jako drahou hračku. Teď ho mám zpátky, na tieru Peak. Tohle jsou dojmy z prvních týdnů; dlouhodobá data si zapisuju do deníku."
         updated={meta.updated}
         source="review"
       >
+        <h2>Co Whoop měří</h2>
         <p>
-          Whoop je zvláštní produkt. Nemá displej, neukáže ti čas ani počet
-          kroků na zápěstí a celé to stojí na předplatném — samotný náramek
-          dostaneš „zdarma" v ceně členství. První reakce většiny lidí je stejná
-          jako moje kdysi byla: <strong>proč bych za tohle platil?</strong> Loni
-          jsem ho měl něco přes měsíc, přišlo mi to jako drahá hračka a vrátil
-          jsem se k jinému trackeru.
+          Whoop nemá displej. Na zápěstí neukáže čas ani kroky a čte se až
+          v aplikaci, ráno. Místo ciferníků řeší tři čísla: kolik toho tělo
+          zvládlo (Strain), jak se zregenerovalo (Recovery) a jak jsi spal.
         </p>
         <p>
-          Teď jsem zpátky, tentokrát na vyšším tieru <strong>Peak</strong> — a s
-          jiným záměrem. Neberu ho jako hodinky, ale jako nástroj na optimalizaci
-          výkonu, spánku a zdraví. Tohle je proto <strong>úvodní recenze</strong>:
-          moje první dojmy z návratu propojené s tím, na čem se shodují nezávislé
-          testy a recenze. Dlouhodobé „po měsíci, po třech" si píšu průběžně do{" "}
-          <a href="/zkusenosti">deníku</a>.
-        </p>
-
-        <AsideNote title="TL;DR verdikt">
-          Whoop není chytrý náramek — je to 24/7 kouč regenerace a spánku pro
-          lidi, kterým jde o výkon a zdraví. Přesnost tepu, spánku a dýchání je
-          špičková, appka je roky před konkurencí a dobíjení za nošení je paráda.
-          Zaplatíš za to měsíčním předplatným a chybějícím displejem. Když chceš
-          jen glanceable hodinky nebo tě děsí denní skóre, není pro tebe. Když
-          chceš svoje tělo <strong>řídit podle dat</strong>, těžko hledáš lepší.
-        </AsideNote>
-
-        <h2>Co Whoop dělá jinak</h2>
-        <p>
-          Místo notifikací a ciferníků řeší Whoop tři věci: kolik toho tvoje
-          tělo zvládne (Strain), jak dobře se zregeneruje (Recovery) a jak spíš.
-          Žádný displej je vlastně záměr — nekoukáš na zápěstí, koukáš ráno do
-          appky. Je to úplně jiná filozofie než u hodinek: nejde o data
-          v reálném čase, ale o klidné ranní vyhodnocení, jak na tom jsi a co
-          s tím dělat.
+          Loni jsem v tom hodnotu neviděl. Teď po něm chci dvě věci: spánek
+          a regeneraci.
         </p>
         <PhotoFigure
           images={[
@@ -99,15 +78,18 @@ export default function Page() {
               alt: "Domovská obrazovka Whoop appky: Sleep 95 %, Recovery 36 %, Strain 5.0",
             },
           ]}
-          caption="Celá filozofie na jedné obrazovce: tři signály — spánek, regenerace, zátěž — plus krátké vysvětlení, proč mám dnešní Recovery nižší."
+          caption="Tři čísla na jedné obrazovce: spánek 95 %, Recovery 36 %, Strain 5.0. Pod nimi věta, proč je Recovery toho dne nižší."
         />
 
-        <h2>Přesnost: tohle je jeho doména</h2>
+        <h2>Přesnost tepu</h2>
         <p>
-          Tady pro mě Whoop pokaždé vyhrává. Tep v klidu i na kardiu měří tak
-          přesně, že jsem ho ani jednou nepřistihl mimo — a nejsem sám.
-          Recenzovaná studie porovnávala Whoop proti EKG a našla odchylku tepu
-          pod půl procenta a shodu „téměř dokonalou". Nezávislý tester{" "}
+          Dvě zařízení jsem nikdy nenosil zároveň, takže žádné měření proti
+          měření nemám. Mám za sebou řadu: roky Apple Watch, pak rok Helio
+          Strap, pak pár týdnů Fitbit Air vedle Whoopu. Při běžném nošení a při
+          běhu mi Whoop dává skoro stejná čísla jako předchozí náramky.
+        </p>
+        <p>
+          Nezávislá měření jdou stejným směrem. Tester{" "}
           <a
             href="https://the5krunner.com/2025/10/31/2026-whoop-5-0-mg-review-discount-accuracy-strain-recovery-athletes/"
             target="_blank"
@@ -115,46 +97,13 @@ export default function Page() {
           >
             the5krunner
           </a>{" "}
-          naměřil 0,98 korelaci s hrudním pásem napříč během, kolem i plaváním.
-          Slabina přichází až u silového tréninku a HIIT, kde optický senzor na
-          zápěstí tep podhodnocuje — vážní sportovci proto Whoop nosí na bicepsu.
+          naměřil korelaci 0,98 s hrudním pásem u běhu, kola i plavání.
+          The Quantified Scientist srovnává wearables proti EKG a laboratornímu
+          měření spánku a Whoop u něj patří k nejlepším v tepu i spánkových
+          fázích. Slabší je to u činek a HIIT, kdy optický senzor na zápěstí tep
+          podhodnocuje; kdo podle tepu řídí silový trénink, nosí Whoop na
+          bicepsu.
         </p>
-        <CompareTable
-          headA="Nezávislé testy"
-          headB="Moje zkušenost"
-          rows={[
-            {
-              label: "Klidový tep",
-              a: { text: "Špičková", tone: "recovery" },
-              b: { text: "Sedí přesně", tone: "recovery" },
-            },
-            {
-              label: "Tep na kardiu",
-              a: { text: "Velmi dobrá", tone: "recovery" },
-              b: { text: "Bez chyby", tone: "recovery" },
-            },
-            {
-              label: "Tep při silovém / HIIT",
-              a: { text: "Slabší na zápěstí", tone: "warn" },
-              b: { text: "Zatím neřeším" },
-            },
-            {
-              label: "Spánek (délka)",
-              a: { text: "Silná stránka", tone: "recovery" },
-              b: { text: "Věřím mu", tone: "recovery" },
-            },
-            {
-              label: "Spánkové fáze",
-              a: { text: "Sporné (jako všude)" },
-              b: { text: "Dobré na to, co to je" },
-            },
-            {
-              label: "Dýchání",
-              a: { text: "Do jednoho dechu", tone: "recovery" },
-              b: { text: "—" },
-            },
-          ]}
-        />
         <PhotoFigure
           images={[
             {
@@ -166,10 +115,9 @@ export default function Page() {
               alt: "Detail spánku: 95 % výkon, konzistence, efektivita, spánkový stres",
             },
           ]}
-          caption="Čísla, z kterých Recovery vzniká: HRV, klidový tep, dýchání a rozpad spánku. Přesně tyhle metriky nezávislé testy hodnotí jako nejpřesnější."
+          caption="Čísla, ze kterých Recovery vzniká: HRV 18, klidový tep 51, dýchání 17,4 a rozpad spánku."
         />
-        <AsideNote title="Chceš tvrdá data o přesnosti?">
-          Nejpoctivější nezávislé testy nosí{" "}
+        <AsideNote title="Kde hledat tvrdá data o přesnosti">
           <a
             href="https://www.quantified.reviews/reviews/devicesiusemyself"
             target="_blank"
@@ -177,20 +125,17 @@ export default function Page() {
           >
             The Quantified Scientist
           </a>{" "}
-          — porovnává wearables proti EKG a laboratornímu spánkovému měření
-          (PSG). Whoop u něj patří ke špičce v tepu i spánkových fázích. Moje
-          zkušenost s tepem s jeho závěry sedí.
+          porovnává wearables proti EKG a laboratornímu spánkovému měření (PSG).
+          Je to jediný zdroj, který u téhle kategorie měří proti referenci, ne
+          proti jinému náramku.
         </AsideNote>
 
-        <h2>Jak vypadá a jak sedí na ruce</h2>
+        <h2>Jak sedí na ruce</h2>
         <p>
-          Tohle nečekaně řeším — a Whoop je podle mě nejhezčí tracker na trhu.
-          Žádný jiný se tomu nepřibližuje: je to čistý senzor v látkovém pásku,
-          bez displeje, bez rušení. Pátá generace je navíc zhruba o 7 % menší a
-          lehčí než 4.0. Proti Helio Strapu je decentnější, proti Fitbitu o něco
-          větší — pořád ale extrémně sleek. A ten <strong>grafitový úpletový
-          pásek</strong> (u Peaku SuperKnit) je tak pohodlný, že je radost ho
-          nosit i ve spánku. Prostě na něj zapomeneš.
+          Nosím ho 24/7. Úpletový SuperKnit pásek je proti Helio Strapu výrazně
+          příjemnější. Fitbit Air byl taky pohodlný, ale na Whoopu oceňuju něco
+          jiného: zapínání. Pásek nikde na druhé straně netrčí, nemůže se sám
+          odepnout, a náramek proto působí tenčeji než Fitbit i Helio.
         </p>
         <PhotoFigure
           images={[
@@ -203,48 +148,38 @@ export default function Page() {
               alt: "Whoop 5.0 zblízka — samotný senzor v grafitovém SuperKnit pásku",
             },
           ]}
-          caption="Grafitový SuperKnit pásek Peaku — bez displeje, jen senzor a úplet. Na ruce ho po chvíli přestaneš vnímat."
+          caption="Grafitový SuperKnit pásek Peaku. Konec pásku nikde nepřečnívá, takže se náramek nemá o co zachytit."
         />
 
-        <h2>Dobíjení na zápěstí: malý detail, velký rozdíl</h2>
+        <h2>Dobíjení</h2>
         <p>
-          U zařízení, které měří spánek a regeneraci 24/7, je každá minuta
-          sundané ruky ztráta dat. Whoop to řeší elegantně: baterie se dobíjí{" "}
-          <strong>přisunutým bezdrátovým powerbankem přímo za nošení</strong> —
-          náramek nikdy nemusíš sundat. Samotná výdrž je nejlepší v kategorii:
-          Whoop udává až 14 dní, recenzenti reálně naměřili spíš 16–18 dní a
-          powerbank sám drží náboj na několik dobití. Nabíjení bez rituálů, bez
-          děr v datech.
+          Dobíjení za nošení má Peak a Life, ne základní One. V ceníku se to dá
+          snadno přehlédnout. Peak a Life dostávají bezdrátový PowerPack, který
+          se přisune na náramek a dobíjí ho na ruce, takže se náramek sundávat
+          nemusí. One se dodává se základní drátovou nabíječkou.
+        </p>
+        <p>
+          Výrobce udává výdrž 14+ dní. Mně vydrží 10 dní při nošení 24/7
+          a pravidelném sportu. Že se dobíjí na ruce, znamená, že nepřijdu
+          o žádná data.
         </p>
 
-        <h2>Software a insighty: tady je pár let náskok znát</h2>
+        <h2>Aplikace</h2>
         <p>
-          Hardware zvládne kdekdo, appka ne. Whoop je na trhu roky a je to
-          poznat — aplikace je vypilovaná, rychlá a hlavně ti čísla{" "}
-          <strong>přeloží do doporučení</strong>. Konkurence (Helio, nováčci)
-          teprve dohání, a to hlavně softwarově. Co mě baví nejvíc:
+          Aplikace čísla nejen ukáže, ale přidá k nim větu, co znamenají. Journal
+          funguje tak, že si zapisuješ chování (alkohol, stres, doplňky) a Whoop
+          pak ukáže, co ti Recovery a HRV táhne nahoru nebo dolů. Stress Monitor
+          a Health Monitor jsou součástí Peaku a Life, na One nejsou.
         </p>
-        <ul>
-          <li>
-            <strong>WHOOP Coach.</strong> AI kouč přímo v appce — zeptáš se a
-            dostaneš odpověď navázanou na tvoje data a sportovní vědu. Od roku
-            2025 si navíc pamatuje kontext v čase.
-          </li>
-          <li>
-            <strong>Journal a behaviors.</strong> Zapíšeš si chování (alkohol,
-            stres, doplňky…) a Whoop ti ukáže, co reálně tahá tvoje Recovery a
-            HRV nahoru nebo dolů. Tuhle zpětnou vazbu jinde nedostaneš.
-          </li>
-          <li>
-            <strong>Biologický věk (WHOOP Age).</strong> Feature, který mě láká
-            asi nejvíc — Whoop z půl roku dat spočítá „fyziologický věk" a tempo
-            stárnutí. Je součástí tieru Peak, takže se k němu konečně dostanu.
-          </li>
-          <li>
-            <strong>Stress Monitor a Health Monitor.</strong> Průběžný stres i
-            přehled klidového tepu, HRV, dýchání a kožní teploty na jednom místě.
-          </li>
-        </ul>
+        <p>
+          S Coachem si píšu pravidelně. Dává tipy a rady a vysvětluje jednotlivá
+          skóre a metriky, takže se nemusím doptávat jinde, co které číslo
+          znamená.
+        </p>
+        <p>
+          WHOOP Age (Healthspan) je taky na Peaku. Aplikace ho odemkne po 21
+          zaznamenaných nocích.
+        </p>
         <PhotoFigure
           images={[
             {
@@ -256,103 +191,118 @@ export default function Page() {
               alt: "Denní aktivity (cycling) a týdenní trend zátěže Strain",
             },
           ]}
-          caption="Vedle čísel (Strain, tepové zóny, aktivity) přidá Whoop i větu, co znamenají, a týdenní trendy. Přesně ten kontext, který samotná data nedají."
+          caption="Strain 13.7 s rozpadem do tepových zón a týdenní trend zátěže. K číslu vždy jedna věta, co znamenalo."
         />
 
-        <h2>Předplatné a cena</h2>
+        <h2>Cena</h2>
         <p>
-          Jádro každé námitky. Whoop hardware neprodává — platíš členství a
-          náramek je v ceně. Základní <strong>Whoop One</strong> startuje na
-          199 €/rok, <strong>Peak</strong> (na kterém jsem já) přidává
-          biologický věk a Stress Monitor za 264 €/rok a nejvyšší{" "}
-          <strong>Life</strong> s EKG a odhadem krevního tlaku vyjde na
-          399 €/rok. Za tři čtyři roky se dostaneš na cenu prémiových hodinek —
-          jen ti na konci nezůstane hardware.
+          Whoop hardware neprodává. Platí se členství a zařízení je v ceně:{" "}
+          <strong>One €199 za rok</strong>, <strong>Peak €264 za rok</strong>,{" "}
+          <strong>Life €399 za rok</strong>. Life přitom jede na zařízení WHOOP
+          MG, ne na 5.0. Na zařízení je celoživotní záruka.
+        </p>
+        <p>
+          Jedna věc, kterou jsem tady měl doteď špatně:{" "}
+          <strong>Whoop se neplatí po měsících.</strong> Členství je roční.
+          Měsíční platba není běžná varianta při registraci a otevírá se až po
+          odslouženém dvanáctiměsíčním období. Není to tedy drobná částka každý
+          měsíc, ale jedna roční platba dopředu.
         </p>
         <CompareTable
           headA="Whoop One"
           headB="Whoop Peak"
           rows={[
             {
-              label: "Cena / rok",
-              a: { text: "199 €", tone: "recovery" },
-              b: { text: "264 €", tone: "warn" },
+              label: "Cena za rok",
+              a: { text: "€199", tone: "recovery" },
+              b: { text: "€264", tone: "warn" },
+            },
+            {
+              label: "Zařízení",
+              a: { text: "WHOOP 5.0" },
+              b: { text: "WHOOP 5.0" },
+            },
+            {
+              label: "Nabíjení",
+              a: { text: "drátová nabíječka", tone: "warn" },
+              b: { text: "dobíjení za nošení", tone: "recovery" },
             },
             {
               label: "Recovery, Strain, spánek",
-              a: { text: "Ano", tone: "recovery" },
-              b: { text: "Ano", tone: "recovery" },
+              a: { text: "ano", tone: "recovery" },
+              b: { text: "ano", tone: "recovery" },
             },
             {
-              label: "WHOOP Coach (AI)",
-              a: { text: "Ano", tone: "recovery" },
-              b: { text: "Ano", tone: "recovery" },
+              label: "WHOOP Coach",
+              a: { text: "ano", tone: "recovery" },
+              b: { text: "ano", tone: "recovery" },
             },
             {
-              label: "Biologický věk",
-              a: { text: "Ne", tone: "warn" },
-              b: { text: "Ano", tone: "recovery" },
+              label: "Healthspan (WHOOP Age)",
+              a: { text: "ne", tone: "warn" },
+              b: { text: "po 21 nocích", tone: "recovery" },
             },
             {
-              label: "Stress Monitor",
-              a: { text: "Ne", tone: "warn" },
-              b: { text: "Ano", tone: "recovery" },
+              label: "Stress a Health Monitor",
+              a: { text: "ne", tone: "warn" },
+              b: { text: "ano", tone: "recovery" },
             },
           ]}
         />
         <p>
-          Kompletní rozpad v korunách, jednotlivé plány a jak si cenu srazit
-          měsíci zdarma mám v článku{" "}
+          Kompletní rozpad v korunách a jednotlivé plány mám v článku{" "}
           <a href="/whoop-cena">kolik stojí Whoop</a>.
         </p>
 
-        <h2>Co mi vadí a komu ho nedoporučím</h2>
-        <p>
-          Ať to nevyzní jako reklama — Whoop má reálné mínusy a je fér je
-          pojmenovat:
-        </p>
+        <h2>Co mi na tom vadí</h2>
         <ul>
           <li>
-            <strong>Předplatné napořád.</strong> Žádná jednorázová koupě.
-            Přestaneš platit, přestaneš měřit. Dlouhodobě je to drahé.
+            <strong>Platí se dál a pořád.</strong> Žádná jednorázová koupě. Když
+            přestaneš platit, přestaneš měřit.
           </li>
           <li>
-            <strong>Žádný displej.</strong> Na čas nebo notifikaci vždycky
-            saháš po telefonu. Pro někoho dealbreaker.
+            <strong>Roztržený chat s Coachem.</strong> Coach se dá otevřít
+            z několika míst v aplikaci a nemám pocit, že si mezi sebou drží
+            kontext. Když něco řeším a za hodinu otevřu chat odjinud, začínám
+            nanovo. Chtěl bych jeden chat, který ví, co už jsme probrali.
           </li>
           <li>
-            <strong>Přesnost u silového tréninku.</strong> Na zápěstí tep při
-            HIIT a činkách kolísá — a tím pádem i Strain. Řešení je nosit ho na
-            bicepsu, což ne každý chce.
+            <strong>Tep u silového tréninku.</strong> Optický senzor na zápěstí
+            při činkách a HIIT podhodnocuje, a s ním i Strain. Řešením je nosit
+            náramek na bicepsu.
           </li>
           <li>
-            <strong>Riziko přeoptimalizace.</strong> Denní skóre umí spustit
-            úzkost („proč mám dneska 30 %?"). Když víš, že se v datech ztrácíš,
-            zvaž, jestli to chceš na zápěstí 24/7.
+            <strong>Denní skóre umí zatížit hlavu.</strong> Ranní číslo se dá
+            čekat i vyhlížet a u někoho to nadělá víc škody než užitku.
           </li>
           <li>
             <strong>Reputační šrám.</strong> Při startu 5.0 Whoop couvl ze
-            slíbených bezplatných upgradů a schytal pořádnou vlnu kritiky —
-            nakonec to částečně napravil, ale chuť to zanechalo.
+            slíbených bezplatných upgradů a schytal za to vlnu kritiky. Nakonec
+            to částečně napravil.
           </li>
         </ul>
 
-        <h2>Verdikt: komu se vyplatí</h2>
+        <h2>Vyplatí se ten příplatek za členství?</h2>
         <p>
-          Po návratu mi dává Whoop smysl přesně tam, kde loni ne — beru ho jako
-          nástroj na <strong>výkon, zdraví a dlouhověkost</strong>, ne jako
-          gadget. Přesnost tepu a spánku je špičková, appka roky před
-          konkurencí, dobíjení za nošení paráda a biologický věk přesně ten typ
-          insightu, kvůli kterému to má cenu. Zaplatíš za to předplatným a
-          displejem, který nikdy nebude.
+          Tohle je pro mě ta skutečná otázka, ne displej. Že je Whoop dražší
+          než Helio Strap nebo Fitbit Air, jsem věděl dopředu — oba se koupí
+          jednou a tím to končí. Řešil jsem, jestli členství oproti nim něco
+          skutečně přidává za tu opakovanou platbu navíc.
         </p>
         <p>
-          Než se rozhodneš, projdi si{" "}
-          <a href="/whoop-cena">kolik Whoop reálně stojí</a>, a jestli zvažuješ
-          alternativu bez předplatného, přečti si{" "}
-          <a href="/whoop-vs-helio">srovnání s Helio Strapem</a>. A pokud to
-          chceš rovnou zkusit, první měsíc máš{" "}
-          <a href="/whoop-zdarma">přes můj odkaz zdarma</a>.
+          Po testování obou jsem došel k závěru, že ano. Rozdíl není v tom, co
+          náramek naměří; tam si jsou blízké. Je v tom, co Whoop s těmi čísly
+          udělá. Insighty a Coach mi dávají oporu, kterou jsem u
+          jednorázově koupených náramků neměl, a beru teď Whoop jako nástroj,
+          kterému věřím při zlepšování zdraví a dlouhověkosti, ne jako další
+          gadget na zápěstí.
+        </p>
+        <p>Zaplatí se to roční platbou — jednorázová koupě to není a nikdy nebude.</p>
+        <p>
+          Rozpad ceny v korunách mám v samostatném článku,{" "}
+          <a href="/whoop-vs-helio">srovnání s Helio Strapem</a> taky. Jestli to
+          chceš zkusit sám, přes můj odkaz máš{" "}
+          <a href="/whoop-zdarma">první měsíc zdarma</a>.
         </p>
 
         <h2>Časté otázky</h2>

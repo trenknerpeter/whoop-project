@@ -82,10 +82,13 @@ body {
   color: var(--color-ink);
   margin-top: 1.8em;
 }
+/* No measure cap: headings, tables and figures fill the article card, so
+   capping only the paragraphs left a dead gutter down the right-hand side.
+   Paragraphs now share the card's width like everything else. */
 .prose-editorial p,
 .prose-editorial ul,
 .prose-editorial ol {
-  max-width: 62ch;
+  max-width: none;
 }
 .prose-editorial a {
   color: var(--color-blue-deep);

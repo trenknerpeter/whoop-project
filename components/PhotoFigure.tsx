@@ -35,21 +35,21 @@ export function PhotoFigure({
 
   return (
     <figure className="not-prose my-7">
-      <div
-        className={
-          single
-            ? "flex justify-center"
-            : "flex flex-wrap justify-center gap-3"
-        }
-      >
+      {/* Every thumbnail gets the same fixed max-width regardless of the
+          source photo's aspect ratio. Sizing the frame off a fixed height
+          instead (letting width fall out of each photo's own proportions)
+          made portrait shots — phone screenshots especially — render at
+          wildly different, often much narrower, widths than the prose
+          column above and below them. */}
+      <div className="flex flex-wrap justify-center gap-3">
         {images.map((img) => (
           <button
             key={img.src}
             type="button"
             onClick={() => setActive(img)}
             aria-label={`Zvětšit: ${img.alt}`}
-            className={`group overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-widget ${
-              single ? "max-w-[240px]" : "w-fit shrink-0"
+            className={`group max-w-[240px] overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-widget ${
+              single ? "" : "flex-1 basis-[200px]"
             }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -57,9 +57,7 @@ export function PhotoFigure({
               src={img.src}
               alt={img.alt}
               loading="lazy"
-              className={`h-64 object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-72 ${
-                single ? "w-full" : "w-auto"
-              }`}
+              className="h-64 w-full object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-72"
             />
           </button>
         ))}
