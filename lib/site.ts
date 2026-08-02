@@ -2,8 +2,7 @@
 
 export const site = {
   name: "Whoop Journal",
-  // TODO(peter): set the real domain once purchased (leaning whoopdenik.cz).
-  url: "https://example.com",
+  url: "https://whoopjournal.cz",
   author: "Peter",
   // Short tagline used in header/OG.
   tagline: "Osobní deník o nositelné elektronice",
