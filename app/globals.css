@@ -243,6 +243,53 @@ body {
   animation: breathe-b 11s ease-in-out infinite;
 }
 
+/*
+  WHOOP Age masthead orb (AgeMastheadBg). Two irregular blobs counter-rotate
+  at deliberately non-multiple periods (70s / 94s), so the combined silhouette
+  never repeats a recognisable beat — it just keeps slowly deforming. Linear,
+  because any easing would make the rotation visibly "pump".
+*/
+@keyframes orb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes orb-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+/*
+  Speckles hold the same opacity/scale at 0 % and 100 % as their static
+  attribute values, so `animation: none` under reduced motion leaves the
+  orb's rim fully speckled rather than blank.
+*/
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+.animate-orb-spin {
+  animation: orb-spin 70s linear infinite;
+}
+.animate-orb-spin-rev {
+  animation: orb-spin-rev 94s linear infinite;
+}
+.animate-orb-drift {
+  animation: orb-spin 140s linear infinite;
+}
+.animate-twinkle {
+  animation: twinkle 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -254,7 +301,11 @@ body {
   .animate-kenburns,
   .animate-band-cycle,
   .animate-breathe-a,
-  .animate-breathe-b {
+  .animate-breathe-b,
+  .animate-orb-spin,
+  .animate-orb-spin-rev,
+  .animate-orb-drift,
+  .animate-twinkle {
     animation: none;
   }
   /*

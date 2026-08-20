@@ -8,7 +8,7 @@ import { WHOOP_REFERRAL_CODE } from "@/lib/site";
 const slug = "whoop-zdarma";
 const title = "Whoop na měsíc zdarma: jak na to (2026)";
 const description =
-  "Přes referral odkaz dostaneš první měsíc členství Whoop zdarma. Vysvětluju, jak to funguje, co za tím je a jaké jsou podmínky — upřímně.";
+  "Přes referral odkaz dostaneš první měsíc členství Whoop zdarma. Vysvětluju, jak to funguje, co za tím je a jaké jsou podmínky.";
 const updated = "2026-07-21";
 
 export const metadata: Metadata = {

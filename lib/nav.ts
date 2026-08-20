@@ -72,6 +72,17 @@ export const articles: Article[] = [
     published: false,
   },
   {
+    slug: "whoop-age",
+    title: "WHOOP Age: tři týdny s biologickým věkem",
+    nav: "WHOOP Age",
+    kicker: "Vysvětlení",
+    excerpt:
+      "Po 21 nocích mi Whoop spočítal biologický věk 26,9 proti kalendářním 34,7. Devět metrik, které ten věk snižují, a jedna, co mi ho naopak zvyšuje.",
+    updated: "2026-08-19",
+    isWhoop: true,
+    published: true,
+  },
+  {
     slug: "zkusenosti",
     title: "Whoop deník: po 1, 3 a 6 měsících",
     nav: "Deník",
@@ -87,21 +98,57 @@ export const articles: Article[] = [
 // The money page lives on its own — it's a CTA hub, not a diary entry.
 export const dealSlug = "whoop-zdarma";
 
+// Fixed display order for article categories, shared by the header nav and
+// the homepage listing so the two never drift into a different grouping. A
+// kicker not listed here (typo, or a new category not yet wired in) is
+// dropped rather than silently misplaced — add it here first.
+export const KICKER_ORDER = ["Recenze", "Vysvětlení", "Srovnání", "Průvodce", "Deník"];
+
+// Reader-facing name for a category, where it differs from the `kicker` key.
+// The kicker stays the stable identifier (it's what each article declares);
+// this is only the wording shown in the nav and the homepage headings.
+export const KICKER_LABEL: Record<string, string> = {
+  Vysvětlení: "Život s Whoop",
+};
+
+export function kickerLabel(kicker: string): string {
+  return KICKER_LABEL[kicker] ?? kicker;
+}
+
+export function publishedByKicker(kicker: string): Article[] {
+  return articles
+    .filter((a) => a.published && a.kicker === kicker)
+    .sort((a, b) => b.updated.localeCompare(a.updated));
+}
+
+// Every published kicker with its articles, in KICKER_ORDER — the single
+// source both the homepage grid and the header dropdowns read from.
+export function publishedGroups(): {
+  kicker: string;
+  label: string;
+  items: Article[];
+}[] {
+  return KICKER_ORDER.map((kicker) => ({
+    kicker,
+    label: kickerLabel(kicker),
+    items: publishedByKicker(kicker),
+  })).filter((g) => g.items.length > 0);
+}
+
 export type NavItem = {
   label: string;
   href?: string;
   children?: { href: string; label: string }[];
 };
 
-// The two comparison articles, shown as a dropdown under "Srovnání".
-export const compareNav = [
-  { href: "/whoop-vs-helio", label: "Whoop 5.0 vs Helio Strap" },
-  { href: "/whoop-vs-fitbit", label: "Whoop 5.0 vs Fitbit Air" },
-];
-
+// A category with one article becomes a plain link; two or more become a
+// dropdown. New articles slot in automatically — no header edit needed.
 export const primaryNav: NavItem[] = [
-  { href: "/whoop-recenze", label: "Recenze" },
-  { label: "Srovnání", children: compareNav },
+  ...publishedGroups().map(({ label, items }): NavItem =>
+    items.length === 1
+      ? { href: `/${items[0].slug}`, label }
+      : { label, children: items.map((a) => ({ href: `/${a.slug}`, label: a.nav })) },
+  ),
   { href: `/${dealSlug}`, label: "Měsíc zdarma" },
 ];
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { articles, dealSlug } from "@/lib/nav";
+import { publishedGroups, dealSlug } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/lib/jsonld";
 import { HomeHeroVisual } from "@/components/HomeHeroVisual";
@@ -79,24 +79,32 @@ export default function Home() {
       </section>
 
       <div className="mx-auto max-w-7xl px-5 pb-14">
-        {/* Article listing */}
-        <section className="mt-6 grid gap-x-9 gap-y-8 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:grid-cols-2 sm:px-10">
-          {articles
-            .filter((a) => a.published)
-            .map((a) => (
-              <Link key={a.slug} href={`/${a.slug}`} className="group block">
-                <p className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-deep">
-                  {a.kicker}
-                </p>
-                <h2 className="mt-2 font-display text-[1.2rem] font-semibold leading-snug text-ink transition-colors group-hover:text-green-deep">
-                  {a.title}
-                </h2>
-                <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-muted">
-                  {a.excerpt}
-                </p>
-              </Link>
-            ))}
-        </section>
+        {/* Article listing, one card per kicker (Recenze, Srovnání, …) so the
+            grid doesn't turn into an undifferentiated pile as more articles
+            land — a review and a comparison read very differently, and
+            should look it before you even click through. */}
+        {publishedGroups().map(({ kicker, label, items }) => (
+          <section
+            key={kicker}
+            className="mt-6 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:px-10"
+          >
+            <h2 className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-deep">
+              {label}
+            </h2>
+            <div className="mt-4 grid gap-x-9 gap-y-8 sm:grid-cols-2">
+              {items.map((a) => (
+                <Link key={a.slug} href={`/${a.slug}`} className="group block">
+                  <h3 className="font-display text-[1.2rem] font-semibold leading-snug text-ink transition-colors group-hover:text-green-deep">
+                    {a.title}
+                  </h3>
+                  <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-muted">
+                    {a.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
 
         {/* Why this blog */}
         <section className="mt-6 rounded-3xl bg-surface px-7 py-9 shadow-widget sm:px-10">

@@ -178,7 +178,9 @@ export default function Page() {
         </p>
         <p>
           WHOOP Age (Healthspan) je taky na Peaku. Aplikace ho odemkne po 21
-          zaznamenaných nocích.
+          zaznamenaných nocích; mně pak ukázala 26,9 proti kalendářním 34,7.
+          Rozpad podle devíti metrik mám v článku o{" "}
+          <a href="/whoop-age">biologickém věku</a>.
         </p>
         <PhotoFigure
           images={[

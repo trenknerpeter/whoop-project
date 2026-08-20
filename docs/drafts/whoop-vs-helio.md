@@ -71,7 +71,7 @@ jednoho Helia tak vyjde asi půl roku Whoopu. Kvůli tomu jsem Whoop rok odklád
 
 ## V čem je Helio dobré
 
-Rok jsem ho nosil rád a ve dvou věcech mě bavil víc, než jsem čekal.
+Rok jsem ho nosil rád a v pár věcech mě bavil víc, než jsem čekal.
 
 **Data z tréninku.** U běhu jsem viděl délku kroku i kadenci, průměrnou i maximální,
 a používal jsem to. U tenisu to šlo dál: počítalo to údery a rozeznávalo forhend od

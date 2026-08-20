@@ -10,9 +10,14 @@ type Img = { src: string; alt: string };
 export function PhotoFigure({
   images,
   caption,
+  aspect = "portrait",
 }: {
   images: Img[];
   caption?: string;
+  // "portrait" fits phone-screenshot proportions (tall frame). "wide" is for
+  // landscape crops (e.g. a cropped-down detail strip) that would otherwise
+  // float tiny and letterboxed inside the tall portrait frame.
+  aspect?: "portrait" | "wide";
 }) {
   const [active, setActive] = useState<Img | null>(null);
 
@@ -32,6 +37,11 @@ export function PhotoFigure({
   }, [active]);
 
   const single = images.length === 1;
+  // Portrait frame assumes phone-screenshot proportions (see comment below);
+  // a landscape crop needs a wider, shorter frame or it floats tiny and
+  // letterboxed inside all that unused vertical space.
+  const frameMaxW = aspect === "wide" ? "max-w-[420px]" : "max-w-[240px]";
+  const frameH = aspect === "wide" ? "h-32 sm:h-36" : "h-64 sm:h-72";
 
   return (
     <figure className="not-prose my-7">
@@ -48,7 +58,7 @@ export function PhotoFigure({
             type="button"
             onClick={() => setActive(img)}
             aria-label={`Zvětšit: ${img.alt}`}
-            className={`group max-w-[240px] overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-widget ${
+            className={`group ${frameMaxW} overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-widget ${
               single ? "" : "flex-1 basis-[200px]"
             }`}
           >
@@ -57,7 +67,7 @@ export function PhotoFigure({
               src={img.src}
               alt={img.alt}
               loading="lazy"
-              className="h-64 w-full object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-72"
+              className={`${frameH} w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]`}
             />
           </button>
         ))}

@@ -50,14 +50,14 @@ export default function Page() {
       <ArticleShell
         kicker="Srovnání"
         title="Whoop vs Fitbit Air: nejsou náramky jako náramky"
-        standfirst="Google překvapivě vydal vlastní náramek bez displeje — Fitbit Air. Stejná forma jako Whoop, jen mnohem casual: nejpohodlnější kus, co jsem nosil, ale mělčí data a AI kouč až za předplatné. Nosil jsem ho vedle Whoopu 5.0, tohle je upřímné srovnání."
+        standfirst="Google vydal vlastní náramek bez displeje, Fitbit Air. Stejná forma jako Whoop, jen mnohem casual: nejpohodlnější kus, co jsem nosil, ale mělčí data a AI kouč až za předplatné. Nosil jsem ho pár týdnů vedle Whoopu 5.0."
         updated={meta.updated}
         source="compare-fitbit"
         mastheadBg={<FitbitMastheadBg />}
       >
         <p>
-          Fitbit jsem měl v hlavě zaškatulkovaný jako hodinky s displejem —
-          proto mě Fitbit Air upřímně překvapil. Google s ním vlezl přesně do
+          Fitbit jsem měl v hlavě zaškatulkovaný jako hodinky s displejem,
+          proto mě Fitbit Air překvapil. Google s ním vlezl přesně do
           kategorie, kterou vymyslel Whoop: <strong>náramek bez displeje</strong>,
           látkový pásek, senzor na spodní straně a všechno se čte až v aplikaci.
           Stejný koncept jako Whoop nebo Amazfit Helio, jen za jednorázových
@@ -219,7 +219,8 @@ export default function Page() {
         </p>
         <p>
           Zpětná strana mince: <strong>chybí hloubka</strong>. Kde ti Whoop
-          rozebere zátěž (Strain), regeneraci a biologický věk a Helio nasype
+          rozebere zátěž (Strain), regeneraci a{" "}
+          <a href="/whoop-age">biologický věk</a> a Helio nasype
           detaily z tréninku, tam Fitbit Air zůstává u povrchu. Dostaneš hezký
           přehled, ale ne úroveň dat, podle které bys ladil formu.
         </p>

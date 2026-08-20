@@ -34,7 +34,7 @@ export default function Page() {
         <p>
           Nejčastější zmatek u Whoopu: nekupuješ náramek, platíš{" "}
           <strong>členství</strong> a hardware dostaneš v ceně. Díky tomu je
-          vstupní cena nízká, ale platíš dál každý měsíc. Pojďme na čísla.
+          vstupní cena nízká, ale platíš dál každý rok. Pojďme na čísla.
         </p>
 
         <TodoNote>

@@ -50,7 +50,7 @@ export default function Page() {
       <ArticleShell
         kicker="Srovnání"
         title="Whoop vs Amazfit Helio Strap: nejsou data jako data"
-        standfirst="Stejný koncept — žádný displej, měření 24/7, ranní číslo v appce. Úplně jiný obchodní model: Whoop chce předplatné, Helio jednu platbu. Helio jsem nosil přes rok, tohle je upřímné srovnání."
+        standfirst="Oba náramky vynechávají displej a měří nonstop, ale platí se za ně úplně jinak: Helio jednou, Whoop každý rok. Helio jsem nosil přes rok a pak přešel na Whoop 5.0."
         updated={meta.updated}
         source="compare-helio"
         mastheadBg={<HelioMastheadBg />}
@@ -58,7 +58,7 @@ export default function Page() {
         <p>
           Amazfit Helio Strap přišel v létě 2025 s jasnou ambicí: být „Whoop
           killer". Vzal koncept náramku bez displeje a škrtl to, co lidem na
-          Whoopu vadí nejvíc — <strong>měsíční předplatné</strong>. Za
+          Whoopu vadí nejvíc: <strong>opakovanou platbu</strong>. Za
           jednorázovou cenu slibuje 24/7 měření tepu, spánku, zátěže i
           regenerace v aplikaci Zepp, bez dalších plateb.
         </p>
@@ -66,7 +66,7 @@ export default function Page() {
           Já jsem Helio Strap nosil přes rok — pořídil jsem ho zhruba za 100 €,
           nosil nonstop a logoval s ním sporty. Pak jsem přešel na Whoop 5.0.
           Tohle srovnání tedy není z tabulek výrobců; oba náramky znám z
-          vlastního zápěstí a k Heliu jsem měl upřímně blízko.
+          vlastního zápěstí a k Heliu jsem měl blízko.
         </p>
 
         <PhotoFigure
@@ -161,8 +161,7 @@ export default function Page() {
 
         <h2>V čem je Helio Strap vážně dobrý</h2>
         <p>
-          Ať to nevyzní, že Helio jen prohrává — rok jsem ho nosil rád a v pár
-          věcech mě upřímně bavil víc, než jsem čekal.
+          Rok jsem ho nosil rád a v pár věcech mě bavil víc, než jsem čekal.
         </p>
         <ul>
           <li>
@@ -248,8 +247,9 @@ export default function Page() {
           </li>
           <li>
             <strong>Biologický věk.</strong> V tieru Peak Whoop počítá
-            biologický věk — číslo, které mě upřímně láká zjistit a které
-            Helio nemá.
+            biologický věk, který Helio nemá. Po 21 nocích mi appka ukázala
+            26,9 proti kalendářním 34,7; co to číslo skládá, rozebírám
+            v článku o <a href="/whoop-age">biologickém věku</a>.
           </li>
           <li>
             <strong>Komunita a rozšířenost.</strong> Vidět sportovce, které

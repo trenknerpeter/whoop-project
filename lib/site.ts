@@ -7,7 +7,7 @@ export const site = {
   // Short tagline used in header/OG.
   tagline: "Osobní deník o nositelné elektronice",
   description:
-    "Osobní zkušenosti s Whoop a dalšími fitness náramky, které jsem nosil. Recenze, srovnání a upřímné tipy — bez marketingových keců.",
+    "Osobní zkušenosti s Whoop a dalšími fitness náramky, které jsem nosil. Recenze, srovnání a tipy — bez marketingových keců.",
   locale: "cs_CZ",
   lang: "cs",
 } as const;
