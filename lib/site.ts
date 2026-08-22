@@ -15,8 +15,8 @@ export const site = {
 // Peter's real Whoop referral link + code, from the app's "Get One Month Free" share screen.
 // All CTAs route through /go, which redirects here. The raw code is shown as a
 // fallback for manual entry (also reads as more authentic than a bare link).
-export const WHOOP_REFERRAL_URL = "https://join.whoop.com/7CF9FB2F";
-export const WHOOP_REFERRAL_CODE = "7CF9FB2F";
+export const WHOOP_REFERRAL_URL = "https://join.whoop.com/FD32FE15";
+export const WHOOP_REFERRAL_CODE = "FD32FE15";
 
 // Human-readable label for the deal, kept in one place so wording stays consistent.
 export const REFERRAL_DEAL = {
