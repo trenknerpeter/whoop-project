@@ -12,15 +12,13 @@ export const site = {
   lang: "cs",
 } as const;
 
-// Peter's real Whoop referral link + code, from the app's "Get One Month Free" share screen.
-// All CTAs route through /go, which redirects here. The raw code is shown as a
-// fallback for manual entry (also reads as more authentic than a bare link).
-export const WHOOP_REFERRAL_URL = "https://join.whoop.com/FD32FE15";
-export const WHOOP_REFERRAL_CODE = "FD32FE15";
+// Peter's Whoop affiliate link (Whoop affiliate program). All CTAs route through
+// /go, which redirects here — this is the only place the link lives.
+export const WHOOP_AFFILIATE_URL = "https://join.whoop.com/WhoopJournal";
 
 // Human-readable label for the deal, kept in one place so wording stays consistent.
 export const REFERRAL_DEAL = {
   headline: "Získej první měsíc Whoop zdarma",
-  sub: "Přes můj referral odkaz dostaneš první měsíc členství zdarma. Já za to dostanu měsíc kreditu — férová výhra pro oba.",
+  sub: "Přes můj odkaz dostaneš první měsíc členství zdarma. Já od Whoopu dostanu provizi z affiliate programu a tebe to nestojí nic navíc.",
   button: "Aktivovat měsíc zdarma",
 } as const;

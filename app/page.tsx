@@ -115,7 +115,7 @@ export default function Home() {
             Recenze náramků na internetu skoro vždycky píše někdo, kdo daný kus
             nosil týden a pak ho vrátil. Já je nosím měsíce a srovnávám je mezi
             sebou na jednom zápěstí. Když ti přes moje odkazy vyjde měsíc Whoopu
-            zdarma, mám z toho radost — a měsíc kreditu. — {site.author}
+            zdarma, mám z toho radost a od Whoopu provizi. — {site.author}
           </p>
         </section>
       </div>

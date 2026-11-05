@@ -72,7 +72,7 @@ export default function Page() {
         />
 
         <AsideNote title="Jak si cenu reálně snížit">
-          První měsíc jde získat zdarma přes referral odkaz — to je legální a
+          První měsíc jde získat zdarma přes partnerský odkaz — to je legální a
           oficiální cesta, jak náklady snížit hned na startu. Detaily mám na
           stránce <a href="/whoop-zdarma">Whoop na měsíc zdarma</a>.
         </AsideNote>

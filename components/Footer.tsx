@@ -42,13 +42,14 @@ export function Footer() {
 
         <div className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-ink-muted">
           <p>
-            Toto je neoficiální osobní blog. Nejsem spojený se společností WHOOP,
-            Inc. ani s dalšími zmíněnými značkami. „WHOOP" a další názvy jsou
+            Toto je neoficiální osobní blog. Nejsem zaměstnancem společnosti
+            WHOOP, Inc. ani dalších zmíněných značek; s WHOOP mě spojuje jen
+            jejich affiliate program. „WHOOP" a další názvy jsou
             ochranné známky příslušných vlastníků.
           </p>
           <p className="mt-2">
-            Odkazy na Whoop jsou referral odkazy — když je použiješ, dostaneš
-            první měsíc zdarma a já dostanu měsíc kreditu. Nic navíc tě to nestojí.
+            Odkazy na Whoop jsou affiliate odkazy. Když je použiješ, dostaneš
+            první měsíc zdarma a já od Whoopu provizi. Nic navíc tě to nestojí.
           </p>
           <p className="mt-3">
             © {new Date().getFullYear()} {site.name}

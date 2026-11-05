@@ -7,8 +7,8 @@ and earn referral credits. See the design doc in the Claude plan for full contex
 
 Search the repo for these and replace with real values:
 
-- [ ] **`lib/site.ts` → `WHOOP_REFERRAL_URL`** — your real referral link from the
-      Whoop app (☰ → "Get One Month Free"). Every CTA routes through `/go` to this.
+- [x] **`lib/site.ts` → `WHOOP_AFFILIATE_URL`** — the Whoop affiliate link
+      (join.whoop.com/WhoopJournal). Every CTA routes through `/go` to this.
 - [ ] **`lib/site.ts` → `site.url`** — the real domain once purchased (leaning
       whoopdenik.cz).
 - [x] **`lib/site.ts` → `site.name`** — set to "Whoop deník" (used in the header,
