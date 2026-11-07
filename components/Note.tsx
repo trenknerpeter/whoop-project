@@ -3,11 +3,19 @@
 //    before launch). Visually loud on purpose so nothing ships half-filled.
 //  - "aside": reader-facing highlight box for tips/warnings.
 
-export function TodoNote({ children }: { children: React.ReactNode }) {
+import { UI, type Lang } from "@/lib/i18n";
+
+export function TodoNote({
+  children,
+  lang = "cs",
+}: {
+  children: React.ReactNode;
+  lang?: Lang;
+}) {
   return (
     <div className="not-prose my-6 rounded-xl border border-dashed border-blue-deep/50 bg-blue-deep/5 px-4 py-3 text-[0.95rem] text-blue-deep">
       <span className="mr-1 font-display font-semibold uppercase tracking-wide">
-        ⚠ Doplnit:
+        {UI[lang].todo}
       </span>
       {children}
     </div>

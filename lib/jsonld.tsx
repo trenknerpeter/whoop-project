@@ -1,4 +1,5 @@
 import { site } from "./site";
+import { localePath, UI, type Lang } from "./i18n";
 
 // Small helpers that return JSON-LD objects. Render with:
 //   <script type="application/ld+json"
@@ -9,15 +10,18 @@ export function articleLd(opts: {
   title: string;
   description: string;
   updated: string;
+  lang?: Lang;
 }) {
+  const lang = opts.lang ?? "cs";
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: opts.title,
     description: opts.description,
-    inLanguage: "cs-CZ",
+    inLanguage: UI[lang].inLanguage,
     dateModified: opts.updated,
-    mainEntityOfPage: `${site.url}/${opts.slug}`,
+    // `slug` is always the Czech slug; localePath maps it for English.
+    mainEntityOfPage: `${site.url}${localePath(lang, opts.slug)}`,
     author: { "@type": "Person", name: site.author },
     publisher: { "@type": "Person", name: site.author },
   };

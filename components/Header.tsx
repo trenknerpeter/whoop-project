@@ -2,21 +2,23 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { LogoMark } from "@/components/LogoMark";
 import { primaryNav, dealSlug } from "@/lib/nav";
+import { localePath, type Lang } from "@/lib/i18n";
+import { LangSwitch } from "@/components/LangSwitch";
 
-export function Header() {
+export function Header({ lang = "cs" }: { lang?: Lang }) {
   return (
     <header>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2.5 px-4 py-5 sm:gap-6 sm:px-5">
         <Link
-          href="/"
-          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-ink"
+          href={localePath(lang, "")}
+          className="flex shrink-0 items-center gap-2 whitespace-nowrap font-display text-base font-semibold sm:gap-2.5 sm:text-lg tracking-tight text-ink"
         >
-          <LogoMark size={30} />
+          <LogoMark size={28} />
           {site.name}
         </Link>
 
-        <nav className="flex items-center gap-1 text-[0.85rem]">
-          {primaryNav.map((item) => {
+        <nav className="flex items-center gap-1 text-[0.8rem] sm:text-[0.85rem]">
+          {primaryNav(lang).map((item) => {
             if (item.children) {
               return (
                 <div
@@ -54,14 +56,14 @@ export function Header() {
               );
             }
 
-            const isDeal = item.href === `/${dealSlug}`;
+            const isDeal = item.href === localePath(lang, dealSlug);
             return (
               <Link
                 key={item.href}
                 href={item.href!}
                 className={
                   isDeal
-                    ? "ml-1 rounded-full bg-anthracite px-4 py-1.5 font-display font-semibold text-green transition-opacity hover:opacity-90"
+                    ? "whitespace-nowrap rounded-full bg-anthracite px-3 py-1.5 sm:ml-1 font-display sm:px-4 font-semibold text-green transition-opacity hover:opacity-90"
                     : "hidden rounded-full px-3 py-1.5 text-ink-muted transition-colors hover:bg-surface hover:text-ink md:inline-block"
                 }
               >
@@ -69,6 +71,9 @@ export function Header() {
               </Link>
             );
           })}
+          <div className="ml-1 sm:ml-2">
+            <LangSwitch lang={lang} />
+          </div>
         </nav>
       </div>
     </header>

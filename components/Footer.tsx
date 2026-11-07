@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
-import { articles, dealSlug } from "@/lib/nav";
+import { site, SITE_TEXT } from "@/lib/site";
+import { articles, dealSlug, localized } from "@/lib/nav";
+import { localePath, UI, type Lang } from "@/lib/i18n";
 
-export function Footer() {
+export function Footer({ lang = "cs" }: { lang?: Lang }) {
+  const t = UI[lang];
   return (
     <footer className="mt-16">
       <div className="mx-auto max-w-5xl px-5 py-12">
@@ -12,28 +14,28 @@ export function Footer() {
               {site.name}
             </p>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-muted">
-              {site.description}
+              {SITE_TEXT[lang].description}
             </p>
           </div>
           <nav className="text-sm">
-            <p className="font-display font-semibold text-ink">Články</p>
+            <p className="font-display font-semibold text-ink">{t.articles}</p>
             <ul className="mt-3 space-y-2">
               {articles.filter((a) => a.published).map((a) => (
                 <li key={a.slug}>
                   <Link
-                    href={`/${a.slug}`}
+                    href={localized(a, lang).href}
                     className="text-ink-muted transition-colors hover:text-green-deep"
                   >
-                    {a.nav}
+                    {localized(a, lang).nav}
                   </Link>
                 </li>
               ))}
               <li>
                 <Link
-                  href={`/${dealSlug}`}
+                  href={localePath(lang, dealSlug)}
                   className="text-ink-muted transition-colors hover:text-green-deep"
                 >
-                  Měsíc zdarma
+                  {t.freeMonth}
                 </Link>
               </li>
             </ul>
@@ -41,16 +43,8 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-ink-muted">
-          <p>
-            Toto je neoficiální osobní blog. Nejsem zaměstnancem společnosti
-            WHOOP, Inc. ani dalších zmíněných značek; s WHOOP mě spojuje jen
-            jejich affiliate program. „WHOOP" a další názvy jsou
-            ochranné známky příslušných vlastníků.
-          </p>
-          <p className="mt-2">
-            Odkazy na Whoop jsou affiliate odkazy. Když je použiješ, dostaneš
-            první měsíc zdarma a já od Whoopu provizi. Nic navíc tě to nestojí.
-          </p>
+          <p>{t.disclaimer1}</p>
+          <p className="mt-2">{t.disclaimer2}</p>
           <p className="mt-3">
             © {new Date().getFullYear()} {site.name}
           </p>

@@ -1,3 +1,4 @@
+import { UI, type Lang } from "@/lib/i18n";
 // Art layer for the full-bleed homepage hero: breathing brand glows, three
 // Whoop band cutouts crossfading over a slow Ken Burns drift, a self-drawing
 // ECG trace and a recovery ring that springs to 90 %. Ported from the Claude
@@ -132,7 +133,7 @@ function ScoreRing({
 // band can't become a billboard on ultra-wide displays.
 const BAND_BOX = "absolute inset-y-0 right-0 w-[46%] max-w-[880px]";
 
-export function HomeHeroVisual() {
+export function HomeHeroVisual({ lang = "cs" }: { lang?: Lang }) {
   return (
     <div className="absolute inset-0 hidden lg:block" aria-hidden>
       {/* Ambient glows — full-hero, unclipped, breathing out of phase */}
@@ -186,7 +187,16 @@ export function HomeHeroVisual() {
 
         {/* Score rings — the app's summary row, floating over the band */}
         <div className="absolute left-1/2 top-[8%] flex -translate-x-1/2 gap-2.5 xl:gap-4">
-          {RINGS.map((ring) => (
+          {RINGS.map((ring) => ({
+            ...ring,
+            value: lang === "en" ? ring.value.replace(" %", "%") : ring.value,
+            label:
+              ring.label === "Spánek"
+                ? UI[lang].sleep
+                : ring.label === "Zátěž"
+                  ? UI[lang].strain
+                  : ring.label,
+          })).map((ring) => (
             <ScoreRing key={ring.label} {...ring} />
           ))}
         </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReferralCTA } from "./ReferralCTA";
-import { REFERRAL_DEAL } from "@/lib/site";
+import { DEAL } from "@/lib/site";
+import { localePath, UI, type Lang } from "@/lib/i18n";
 
 type Props = {
   kicker: string;
@@ -15,11 +16,12 @@ type Props = {
   // Optional decorative art rendered behind the masthead title (text-free).
   mastheadBg?: React.ReactNode;
   children: React.ReactNode;
+  lang?: Lang;
 };
 
-function formatDate(iso?: string) {
+function formatDate(iso: string | undefined, lang: Lang) {
   if (!iso) return null;
-  return new Date(iso).toLocaleDateString("cs-CZ", {
+  return new Date(iso).toLocaleDateString(UI[lang].dateLocale, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -36,8 +38,10 @@ export function ArticleShell({
   heroCta = false,
   mastheadBg,
   children,
+  lang = "cs",
 }: Props) {
-  const date = formatDate(updated);
+  const date = formatDate(updated, lang);
+  const t = UI[lang];
   return (
     <div className="mx-auto max-w-5xl px-5 pb-14 pt-2">
       <article className="animate-rise overflow-hidden rounded-3xl bg-surface shadow-widget">
@@ -60,7 +64,7 @@ export function ArticleShell({
             </p>
             {date && (
               <p className="mt-4 text-sm text-on-dark-faint">
-                Aktualizováno {date}
+                {t.updated} {date}
               </p>
             )}
             {heroCta && (
@@ -70,7 +74,7 @@ export function ArticleShell({
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-green px-6 py-3 font-display text-[0.95rem] font-semibold text-green-ink transition-transform hover:-translate-y-0.5"
               >
-                {REFERRAL_DEAL.button}
+                {DEAL[lang].button}
                 <span aria-hidden>→</span>
               </a>
             )}
@@ -83,13 +87,13 @@ export function ArticleShell({
 
           {showCTA && (
             <div className="mt-12">
-              <ReferralCTA source={source} />
+              <ReferralCTA source={source} lang={lang} />
             </div>
           )}
 
           <p className="py-9 text-sm text-ink-muted">
-            <Link href="/" className="transition-colors hover:text-green-deep">
-              ← Zpět na všechny články
+            <Link href={localePath(lang, "")} className="transition-colors hover:text-green-deep">
+              {t.back}
             </Link>
           </p>
         </div>
