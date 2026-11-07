@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
+import { LogoMark } from "@/components/LogoMark";
 
 export const alt = `${site.name} — ${site.tagline}`;
 export const size = { width: 1200, height: 630 };
@@ -22,16 +23,28 @@ export default function OgImage() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              fontSize: 26,
-              letterSpacing: 6,
-              textTransform: "uppercase",
-              color: "#4DA8F0",
-              fontWeight: 600,
-            }}
-          >
-            {site.name}
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                backgroundColor: "#F0F2F4",
+                borderRadius: 18,
+                padding: 8,
+              }}
+            >
+              <LogoMark size={56} />
+            </div>
+            <div
+              style={{
+                fontSize: 26,
+                letterSpacing: 6,
+                textTransform: "uppercase",
+                color: "#4DA8F0",
+                fontWeight: 600,
+              }}
+            >
+              {site.name}
+            </div>
           </div>
           <div
             style={{

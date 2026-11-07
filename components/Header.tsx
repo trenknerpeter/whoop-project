@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { LogoMark } from "@/components/LogoMark";
 import { primaryNav, dealSlug } from "@/lib/nav";
 
 export function Header() {
   return (
     <header>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-5">
-        <Link href="/" className="font-display text-lg font-semibold tracking-tight text-ink">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-ink"
+        >
+          <LogoMark size={30} />
           {site.name}
         </Link>
 
