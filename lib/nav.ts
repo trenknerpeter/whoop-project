@@ -83,6 +83,17 @@ export const articles: Article[] = [
     published: true,
   },
   {
+    slug: "whoop-100-dni",
+    title: "O 100 dní později",
+    nav: "100 dní",
+    kicker: "Vysvětlení",
+    excerpt:
+      "Spánek na 95 až 100 %, Recovery často v červené kvůli HRV kolem 20 a večerní počty, jestli si dát pivo. Co Whoop po sto dnech dělá dobře a co mi chybí.",
+    updated: "2026-11-07",
+    isWhoop: true,
+    published: false,
+  },
+  {
     slug: "zkusenosti",
     title: "Whoop deník: po 1, 3 a 6 měsících",
     nav: "Deník",

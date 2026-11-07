@@ -284,6 +284,11 @@ body {
 .animate-orb-drift {
   animation: orb-spin 140s linear infinite;
 }
+/* 100-days masthead grid: each cell fades in on its own inline delay. */
+.animate-day-in {
+  opacity: 0;
+  animation: fade-in 0.45s ease-out forwards;
+}
 .animate-twinkle {
   animation: twinkle 6s ease-in-out infinite;
   transform-box: fill-box;
@@ -305,7 +310,8 @@ body {
   .animate-orb-spin,
   .animate-orb-spin-rev,
   .animate-orb-drift,
-  .animate-twinkle {
+  .animate-twinkle,
+  .animate-day-in {
     animation: none;
   }
   /*
@@ -320,7 +326,8 @@ body {
     stroke-dashoffset: var(--ring-final, 44);
   }
   .animate-rise,
-  .animate-fade-late {
+  .animate-fade-late,
+  .animate-day-in {
     opacity: 1;
     transform: none;
   }
