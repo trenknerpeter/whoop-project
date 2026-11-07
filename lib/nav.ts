@@ -88,10 +88,10 @@ export const articles: Article[] = [
     nav: "100 dní",
     kicker: "Vysvětlení",
     excerpt:
-      "Spánek na 95 až 100 %, Recovery často v červené kvůli HRV kolem 20 a večerní počty, jestli si dát pivo. Co Whoop po sto dnech dělá dobře a co mi chybí.",
+      "Spánek na 95 až 100 %, Recovery často v červené kvůli nízkému HRV a mělká data z běhu. Co Whoop po sto dnech dělá dobře a co mi chybí.",
     updated: "2026-11-07",
     isWhoop: true,
-    published: false,
+    published: true,
   },
   {
     slug: "zkusenosti",
